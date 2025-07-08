@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EMR Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
       .hero-container {
         position: relative;
@@ -267,6 +268,155 @@
           font-size: 1.125rem; /* text-lg for larger screens */
         }
       }
+
+
+
+
+
+
+            @import url('https://fonts.googleapis.com/css2?family=Author:wght@300&display=swap');
+      .slider-card-img-zoom-container {
+        position: relative;
+        overflow: visible;
+        border-radius: 1rem;
+        z-index: 1;
+      }
+      .slider-card-img-zoom-container .card-text-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0 0 1rem 1rem;
+        z-index: 2;
+        pointer-events: none;
+        box-shadow: 0 0 0 0 transparent !important;
+      }
+      .slider-card-img-zoom-container img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        transition:
+          transform 0.4s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.4s cubic-bezier(0.4,0,0.2,1),
+          filter 0.4s cubic-bezier(0.4,0,0.2,1);
+        will-change: transform, filter, box-shadow;
+        box-shadow: 0 2px 8px 0 rgba(30,64,175,0.10);
+      }
+      .slider-card-img-zoom-container:hover img,
+      .slider-card-img-zoom-container:focus-within img {
+        transform: scale(1.5);
+        box-shadow: 0 8px 32px 0 rgba(30,64,175,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+        filter: brightness(1.07) saturate(1.1);
+      }
+      .slider-track > div {
+        position: relative;
+        z-index: 1;
+      }
+      .arc-slider {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 28px;
+      }
+      .arc-card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        overflow: hidden;
+        width: 180px;
+        height: 260px;
+        transition:
+          transform 0.7s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+        will-change: transform, box-shadow;
+        position: relative;
+        z-index: 1;
+      }
+      .arc-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .arc-slider.arc-active .arc-card {
+        /* JS will set transform inline */
+      }
+      .arc-card.arc-pop {
+        transform: scale(1.08) !important;
+        z-index: 2;
+        box-shadow: 0 8px 32px 0 rgba(30,64,175,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+      }
+      @media (max-width: 640px), (pointer: coarse) {
+        .arc-slider.arc-active .arc-card {
+          transform: none !important;
+        }
+      }
+      .slider-track span.absolute.bottom-3.left-3 {
+        text-shadow: none !important;
+        filter: none !important;
+      }
+      .card-text-overlay,
+      .slider-track span.absolute.bottom-3.left-3,
+      .slider-track span.absolute.bottom-3.left-3.text-white,
+      .slider-track .card-text-overlay {
+        font-family: 'Author', 'Author Light', Arial, sans-serif !important;
+        font-weight: 300 !important;
+        letter-spacing: 0.01em;
+      }
+      .slide {
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        overflow: visible;
+        position: relative;
+        z-index: 1;
+        transition:
+          transform 0.7s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.4s cubic-bezier(0.4,0,0.2,1);
+        will-change: transform, box-shadow;
+      }
+      .zoom-wrapper {
+        position: relative;
+        overflow: visible;
+        border-radius: 1rem;
+        z-index: 2;
+      }
+      .zoom-wrapper img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        transition:
+          transform 0.4s cubic-bezier(0.4,0,0.2,1),
+          box-shadow 0.4s cubic-bezier(0.4,0,0.2,1),
+          filter 0.4s cubic-bezier(0.4,0,0.2,1);
+        will-change: transform, filter, box-shadow;
+        box-shadow: 0 2px 8px 0 rgba(30,64,175,0.10);
+      }
+      .zoom-wrapper:hover img,
+      .zoom-wrapper:focus-within img {
+        transform: scale(2);
+        box-shadow: 0 8px 32px 0 rgba(30,64,175,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+        filter: brightness(1.07) saturate(1.1);
+        z-index: 3;
+      }
+      .slide:hover,
+      .slide:focus-within {
+        z-index: 10;
+      }
+      .slider-track .absolute.top-2.right-2 {
+        z-index: 100 !important;
+        pointer-events: auto;
+        background: #fff;
+        border-radius: 9999px;
+        box-shadow: 0 2px 8px 0 rgba(30,64,175,0.10);
+        transition: box-shadow 0.3s;
+      }
     </style>
   </head>
 
@@ -400,36 +550,101 @@
       </div>
     </section>
 
-    <section id="our-services" class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
-          Our Services
-        </h2>
-        <div class="arc-cards-container">
-          <div class="our-services-card arc-card">
-            <div class="text-3xl mb-4">⚡</div>
-            <h3 class="text-lg font-semibold mb-2">Instant Services</h3>
-            <p class="text-sm">Fast access to medical records and reports.</p>
-          </div>
-          <div class="our-services-card arc-card">
-            <div class="text-3xl mb-4">🖼️</div>
-            <h3 class="text-lg font-semibold mb-2">PACS System</h3>
-            <p class="text-sm">Advanced image archiving and retrieval.</p>
-          </div>
-          <div class="our-services-card arc-card">
-            <div class="text-3xl mb-4">🖨️</div>
-            <h3 class="text-lg font-semibold mb-2">Result Printing</h3>
-            <p class="text-sm">Efficient printing of diagnostic results.</p>
-          </div>
-          <div class="our-services-card arc-card">
-            <div class="text-3xl mb-4">🎓</div>
-            <h3 class="text-lg font-semibold mb-2">Training</h3>
-            <p class="text-sm">Comprehensive staff training programs.</p>
-          </div>
-          <div class="our-services-card arc-card">
-            <div class="text-3xl mb-4">🔧</div>
-            <h3 class="text-lg font-semibold mb-2">Maintenance</h3>
-            <p class="text-sm">Regular system maintenance and support.</p>
+   <section id="custom-services" class="py-20 bg-gray-50">
+      <div class="container mx-auto flex flex-col items-center justify-center px-2 sm:px-4">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">Explore Our Services In Providing<br>Healthcare Solution</h2>
+        <a href="#home" class="bg-white text-black px-8 py-2 rounded-md font-semibold shadow-md inline-block mb-12">Learn More</a>
+        <div class="slider-wrapper w-full max-w-6xl" style="perspective: 1200px; perspective-origin: 50% 50%; overflow: visible;">
+          <div id="gsap-arc-slider" class="slider-track arc-slider py-4 scrollbar-hide snap-x snap-mandatory">
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/thisisengineering-ZPeXrWxOjRQ-unsplash (1).jpg" alt="Instant Service" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Instant Service</div>
+              </div>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/the-climate-reality-project-Hb6uWq0i4MI-unsplash (1).jpg" alt="Laboratory" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Training</div>
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Laboratory</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/martha-dominguez-de-gouveia-nMyM7fxpokE-unsplash (1).jpg" alt="Calendar" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Laboratory</div>
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Laboratory</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/denise-jans-_dXkaD3l574-unsplash (1).jpg" alt="Training" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Result Printing</div>
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Result Printing</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/radiology2.jpg" alt="Radiology 2" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Radiology</div>
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Radiology</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/networking.jpg" alt="Networking" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+                <div class="card-text-overlay">Pacs</div>
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Pacs</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
+              <div class="slider-card-img-zoom-container h-40">
+                <img src="img/maintenance.jpg" alt="Maintenance" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+              </div>
+              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Maintenance</span>
+              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -564,6 +779,178 @@
       }
       window.addEventListener('scroll', handleArcCards);
       window.addEventListener('DOMContentLoaded', handleArcCards);
+
+
+
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const slider = document.getElementById('gsap-arc-slider');
+        if (!slider) return;
+        const cards = Array.from(slider.querySelectorAll('.slider-track > .relative'));
+        const n = cards.length;
+        const maxAngle = 70;
+        const maxZ = 400;
+        const minScale = 0.7;
+        const cardSpacing = 30;
+        let scrollPercent = 0;
+        let direction = 1;
+        let animFrame;
+        let isPaused = false;
+        let hoveredCard = null;
+
+        function updateArc(scrollPercent) {
+          const centerIndex = scrollPercent * (n - 1);
+          cards.forEach((card, i) => {
+            if (card.matches(':hover')) return;
+            const rel = i - centerIndex;
+            const angle = rel * (maxAngle / (n - 1));
+            const rad = angle * Math.PI / 180;
+            const z = maxZ * Math.cos(rad);
+            const edgeBoost = 0.5;
+            const spacing = cardSpacing * (1 + edgeBoost * Math.abs(rel) / (n/2));
+            const x = rel * spacing;
+            const scale = 1 - Math.abs(rel) * (1 - minScale) / (n/2);
+            gsap.to(card, {
+              duration: 0.7,
+              ease: "expo.out",
+              overwrite: 'auto',
+              transform: `translateX(${x}px) translateZ(${-z}px) rotateY(${angle}deg) scale(${scale})`
+            });
+          });
+        }
+
+        function animate() {
+          if (isPaused) return;
+          scrollPercent += 0.002 * direction;
+          if (scrollPercent >= 1) {
+            scrollPercent = 1;
+            direction = -1;
+          } else if (scrollPercent <= 0) {
+            scrollPercent = 0;
+            direction = 1;
+          }
+          updateArc(scrollPercent);
+          animFrame = requestAnimationFrame(animate);
+        }
+
+        updateArc(0);
+        animate();
+
+        function pauseArc() {
+          isPaused = true;
+          cancelAnimationFrame(animFrame);
+        }
+        function resumeArc() {
+          if (!isPaused) return;
+          isPaused = false;
+          animate();
+        }
+
+        slider.addEventListener('mouseenter', pauseArc);
+        slider.addEventListener('mouseleave', function() {
+          hoveredCard = null;
+          resumeArc();
+        });
+
+        cards.forEach((card, i) => {
+          card.addEventListener('mouseenter', () => {
+            hoveredCard = card;
+            pauseArc();
+          });
+          card.addEventListener('mouseleave', () => {
+            hoveredCard = null;
+            resumeArc();
+          });
+        });
+
+        window.addEventListener('resize', () => updateArc(scrollPercent));
+      });
+
+
+
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const slider = document.getElementById('gsap-arc-slider');
+        if (!slider) return;
+        const cards = Array.from(slider.querySelectorAll('.slider-track > .relative'));
+        const n = cards.length;
+        const maxAngle = 70;
+        const maxZ = 400;
+        const minScale = 0.7;
+        const cardSpacing = 30;
+        let scrollPercent = 0;
+        let direction = 1;
+        let animFrame;
+        let isPaused = false;
+        let hoveredCard = null;
+
+        function updateArc(scrollPercent) {
+          const centerIndex = scrollPercent * (n - 1);
+          cards.forEach((card, i) => {
+            if (card.matches(':hover')) return;
+            const rel = i - centerIndex;
+            const angle = rel * (maxAngle / (n - 1));
+            const rad = angle * Math.PI / 180;
+            const z = maxZ * Math.cos(rad);
+            const edgeBoost = 0.5;
+            const spacing = cardSpacing * (1 + edgeBoost * Math.abs(rel) / (n/2));
+            const x = rel * spacing;
+            const scale = 1 - Math.abs(rel) * (1 - minScale) / (n/2);
+            gsap.to(card, {
+              duration: 0.7,
+              ease: "expo.out",
+              overwrite: 'auto',
+              transform: `translateX(${x}px) translateZ(${-z}px) rotateY(${angle}deg) scale(${scale})`
+            });
+          });
+        }
+
+        function animate() {
+          if (isPaused) return;
+          scrollPercent += 0.002 * direction;
+          if (scrollPercent >= 1) {
+            scrollPercent = 1;
+            direction = -1;
+          } else if (scrollPercent <= 0) {
+            scrollPercent = 0;
+            direction = 1;
+          }
+          updateArc(scrollPercent);
+          animFrame = requestAnimationFrame(animate);
+        }
+
+        updateArc(0);
+        animate();
+
+        function pauseArc() {
+          isPaused = true;
+          cancelAnimationFrame(animFrame);
+        }
+        function resumeArc() {
+          if (!isPaused) return;
+          isPaused = false;
+          animate();
+        }
+
+        slider.addEventListener('mouseenter', pauseArc);
+        slider.addEventListener('mouseleave', function() {
+          hoveredCard = null;
+          resumeArc();
+        });
+
+        cards.forEach((card, i) => {
+          card.addEventListener('mouseenter', () => {
+            hoveredCard = card;
+            pauseArc();
+          });
+          card.addEventListener('mouseleave', () => {
+            hoveredCard = null;
+            resumeArc();
+          });
+        });
+
+        window.addEventListener('resize', () => updateArc(scrollPercent));
+      });
     </script>
   </body>
 </html>
