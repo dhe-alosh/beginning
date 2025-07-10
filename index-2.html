@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EMR Solutions</title>
+    <title>FMCA_emr</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
@@ -33,25 +33,38 @@
         width: 100%;
         z-index: 20;
         transition: all 0.3s ease;
+        background: transparent;
+        backdrop-filter: none;
       }
       header.scrolled {
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 8px rgba(30,64,175,0.07);
+      }
+      header h1,
+      header a {
+        color: white;
+        transition: color 0.3s;
       }
       header.scrolled h1,
       header.scrolled a {
         color: #1e40af;
       }
-      header.scrolled a:hover {
-        color: #1e40af;
-        text-decoration: underline;
+      header .nav-link.active {
+        position: relative;
+        color: #38bdf8 !important;
       }
-      header a {
-        color: white;
-      }
-      header a:hover {
-        color: #fbfcfd;
-        text-decoration: underline;
+      header .nav-link.active::after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        margin-top: 4px;
+        width: 28px;
+        height: 7px;
+        border-radius: 10px;
+        background: #38bdf8;
+        opacity: 0.85;
+        transition: width 0.2s;
       }
       .service-card {
         background-color: #1e40af;
@@ -460,22 +473,22 @@
 
   <body class="font-sans">
     <header id="header">
-      <div
-        class="container mx-auto flex justify-between items-center py-4 px-4"
-      >
-        <h1 class="text-2xl font-bold"><img src="img/logo1.png" alt="EMR" class="w-6 h-6 rounded-full shadow-lg mr-1">EMR</h1>
+      <div class="container mx-auto flex justify-between items-center py-4 px-4">
+        <h1 class="text-2xl font-bold flex items-center" style="color:white;">
+          <img src="img/logo1.png" alt="EMR" class="w-6 h-6 rounded-full shadow-lg mr-2 inline-block align-middle">
+          <span class="inline-block align-middle" style="color:white;">emr</span>
+        </h1>
         <nav class="flex items-center space-x-6">
-          <a href="index-2.html">Home</a>
-          <a href="index-2.html#mission">Our Mission</a>
+          <a href="index-2.html" class="nav-link">Home</a>
+          <a href="index-2.html#mission" class="nav-link">Our Mission</a>
           <div class="dropdown">
-            <a href="index-2.html#services" class="dropdown-toggle">Services</a>
+            <a href="index-2.html#services" class="dropdown-toggle nav-link">Services</a>
             <div class="dropdown-content">
-              <!-- <a href="index-2.html#our-services">Our Services</a> -->
               <a href="index-2.html#pacs">PACS</a>
               <a href="index-2.html#appointment">Appointment</a>
             </div>
           </div>
-          <a href="Contact.html">Contact</a>
+          <a href="Contact.html" class="nav-link">Contact</a>
           <a
             href="#"
             class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
@@ -577,12 +590,15 @@
           </div>
 
           <div class="video-player">
-            <iframe
-              src="https://www.youtube.com/embed/EceDhNJE6Eg?si=GfmQr-9vBT4cvJRC"
+            <video
+              src="Healthcare___Motion_Graphic(1080p).mp4"
               frameborder="0"
               allowfullscreen
               class="w-full h-full"
-            ></iframe>
+              controls
+              autoplay
+              muted
+            ></video>
           </div>
         </div>
       </div>
@@ -1095,14 +1111,14 @@
 
      <footer id="contact"
   class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 text-white py-8 border-t-8 border-blue-300 shadow-2xl"
-  style="background: linear-gradient(rgba(16, 37, 89, 0.85), rgba(49, 130, 206, 0.85)), url('img/footer.jpg') center center / cover no-repeat;">
+  style="background: linear-gradient(rgba(16, 37, 89, 0.85), rgba(49, 130, 206, 0.85)), url('img/map_bg.jpeg') center center / cover no-repeat;">
       <div class="container mx-auto px-2">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6 text-xs">
           <!-- Left: Company Info -->
           <div class="flex flex-col items-start md:w-1/3">
             <div class="flex items-center mb-1">
               <img src="img/logo1.png" alt="EMR Logo" class="w-6 h-6 rounded-full shadow-lg mr-1">
-              <span class="text-base font-extrabold tracking-tight font-serif">EMR Solutions</span>
+              <span class="text-base font-extrabold tracking-tight font-sans">emr</span>
             </div>
             <p class="text-blue-100 leading-tight mb-1 font-light">Innovative healthcare solutions for a better tomorrow.</p>
             <div class="flex space-x-2 mt-0.5">
@@ -1119,7 +1135,7 @@
                 <img src="img/techxpl.jpeg" alt="Partner 1 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
               </div>
               <div class="inline-block align-middle">
-                <img src="img/kenn.jpeg" alt="Partner 2 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+                <img src="img/alosh.jpg" alt="Partner 2 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
               </div>
               <div class="inline-block align-middle">
                 <img src="img/mamo.jpeg" alt="Partner 3 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
@@ -1156,7 +1172,7 @@
           </div>
         </div>
         <div class="mt-4 border-t border-blue-400 pt-2 text-center text-blue-100 text-[10px] tracking-wide font-light">
-          <p>© 2025 <span class="font-semibold">EMR Solutions</span>. All rights reserved.</p>
+          <p>© 2025 <span class="font-semibold">alosh inc.</span>. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -1166,15 +1182,48 @@
         const header = document.getElementById("header");
         if (window.scrollY > 50) {
           header.classList.add("scrolled");
-          header.style.backgroundColor = "white";
-          header.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
         } else {
           header.classList.remove("scrolled");
-          header.style.backgroundColor = "transparent";
-          header.style.boxShadow = "none";
         }
       });
 
+      // Active nav indicator
+      function setActiveNav() {
+        const links = document.querySelectorAll('header .nav-link');
+        const sections = [
+          {id: "home", link: "Home"},
+          {id: "mission", link: "Our Mission"},
+          {id: "services", link: "Services"},
+          {id: "pacs", link: "PACS"},
+          {id: "appointment", link: "Appointment"},
+          {id: "contact", link: "Contact"}
+        ];
+        let activeId = "home";
+        for (const section of sections) {
+          const el = document.getElementById(section.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 80 && rect.bottom > 80) {
+              activeId = section.id;
+              break;
+            }
+          }
+        }
+        links.forEach(link => {
+          link.classList.remove("active");
+          const href = link.getAttribute("href") || "";
+          if (
+            (activeId === "home" && href.endsWith("index-2.html")) ||
+            (href.includes("#" + activeId))
+          ) {
+            link.classList.add("active");
+          }
+        });
+      }
+      window.addEventListener("scroll", setActiveNav);
+      window.addEventListener("DOMContentLoaded", setActiveNav);
+    </script>
+    <script>
       // Remove border and rounded corners from all main sections
       document.addEventListener('DOMContentLoaded', function() {
         const sectionIds = [
