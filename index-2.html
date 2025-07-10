@@ -650,6 +650,191 @@
       </div>
     </section>
 
+    <!-- Office Stats Section Start -->
+    <section class="relative h-[200px] scroll-reveal-bg flex items-center w-full mb-16" style="background-image: url('office.jpg'); background-size: cover; background-position: center;">
+      <div class="absolute inset-0 bg-cyan-400/40 pointer-events-none w-full"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-4 w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+          <!-- Stat 1 -->
+          <div class="flex items-center w-full max-w-xs gap-4">
+            <div class="bg-white flex items-center justify-center rounded-md w-16 h-16">
+              <!-- Calendar Icon (Heroicons) -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00BCD4" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3.75 7.5h16.5M4.5 6.75A1.5 1.5 0 0 1 6 5.25h12a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H6a1.5 1.5 0 0 1-1.5-1.5v-12z" />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-3xl md:text-4xl font-bold text-white leading-tight">4,800</span>
+              <span class="text-sm uppercase font-semibold text-white tracking-wide mt-1">Year Experience</span>
+            </div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="flex items-center w-full max-w-xs gap-4">
+            <div class="bg-white flex items-center justify-center rounded-md w-16 h-16">
+              <!-- Phone+Cross Icon (Heroicons phone with plus) -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00BCD4" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 2.25v6m3-3h-6m-2.25 3v2.25a2.25 2.25 0 0 1-2.25 2.25h-.75a2.25 2.25 0 0 0-2.25 2.25v2.25c0 4.556 3.694 8.25 8.25 8.25h.75a2.25 2.25 0 0 0 2.25-2.25v-.75a2.25 2.25 0 0 1 2.25-2.25H19.5" />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-3xl md:text-4xl font-bold text-white leading-tight">2,000</span>
+              <span class="text-sm uppercase font-semibold text-white tracking-wide mt-1">Service Provided</span>
+            </div>
+          </div>
+          <!-- Stat 3 -->
+          <div class="flex items-center w-full max-w-xs gap-4">
+            <div class="bg-white flex items-center justify-center rounded-md w-16 h-16">
+              <!-- User Group Icon (Heroicons) -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00BCD4" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 16.5a7.488 7.488 0 0 0-5.982 2.225M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 7.5a3 3 0 1 0-6 0 3 3 0 0 0 6 0zm-3-3a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-3xl md:text-4xl font-bold text-white leading-tight">1,500</span>
+              <span class="text-sm uppercase font-semibold text-white tracking-wide mt-1">Happy Customers</span>
+            </div>
+          </div>
+          <!-- Stat 4 -->
+          <div class="flex items-center w-full max-w-xs gap-4">
+            <div class="bg-white flex items-center justify-center rounded-md w-16 h-16">
+              <!-- User/Staff Icon (Heroicons) -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00BCD4" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.5 19.5a7.5 7.5 0 0 1 15 0v.75A2.25 2.25 0 0 1 17.25 22.5h-10.5A2.25 2.25 0 0 1 4.5 20.25v-.75z" />
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-3xl md:text-4xl font-bold text-white leading-tight">800</span>
+              <span class="text-sm uppercase font-semibold text-white tracking-wide mt-1">Our Staff</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      .scroll-reveal-bg {
+        background-size: auto 200%;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center top;
+        transition: background-position 0.1s ease-out;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const section = document.querySelector('.scroll-reveal-bg');
+        function updateBgPosition() {
+          if (!section) return;
+          const rect = section.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          // Calculate how much the section is in view (0 at top, 1 at bottom)
+          const offset = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0), 1);
+          // Parallax formula: slower movement
+          const posY = offset * 50;
+          section.style.backgroundPosition = `center calc(${posY + 50}%)`;
+        }
+        window.addEventListener('scroll', updateBgPosition);
+        window.addEventListener('resize', updateBgPosition);
+        updateBgPosition();
+      });
+    </script>
+
+    <!-- Make An Appointment Section Start -->
+<section id="appointment" class="relative w-full py-20 border-2 border-white/30 rounded-2xl mb-16" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('business.jpg') center center / cover no-repeat;">
+  <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-12 items-center h-full">
+    <!-- Left: Features -->
+    <div class="flex-1 w-full flex flex-col justify-center gap-8">
+      <h2 class="text-4xl font-semibold text-white mb-2">Make An Appointment</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-14">
+        <!-- Feature 1 -->
+        <div class="flex items-start gap-6 bg-white/10 border border-white/20 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition backdrop-blur-sm">
+          <div class="flex-shrink-0">
+            <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-white mb-2">Easy Booking</h3>
+            <p class="text-base text-white/80">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="flex items-start gap-6 bg-white/10 border border-white/20 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition backdrop-blur-sm">
+          <div class="flex-shrink-0">
+            <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/><circle cx="16" cy="16" r="2"/><path d="M16 14v2h2"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-white mb-2">Experience</h3>
+            <p class="text-base text-white/80">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="flex items-start gap-6 bg-white/10 border border-white/20 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition backdrop-blur-sm">
+          <div class="flex-shrink-0">
+            <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/><rect x="7" y="14" width="4" height="4" rx="1"/><rect x="13" y="14" width="4" height="4" rx="1"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-white mb-2">Flexible Schedule</h3>
+            <p class="text-base text-white/80">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          </div>
+        </div>
+        <!-- Feature 4 -->
+        <div class="flex items-start gap-6 bg-white/10 border border-white/20 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition backdrop-blur-sm">
+          <div class="flex-shrink-0">
+            <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-white mb-2">Best Price Guarantee</h3>
+            <p class="text-base text-white/80">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right: Appointment Form -->
+    <div class="w-full max-w-md min-w-0 mx-auto bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center">
+      <h3 class="text-lg font-bold text-[#333] uppercase tracking-widest mb-6">Appointment Form</h3>
+      <form id="appointmentForm" class="space-y-4" novalidate>
+        <div>
+          <label for="firstName" class="block font-semibold text-[#333] mb-1">First Name <span class="text-red-500">*</span></label>
+          <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition" />
+        </div>
+        <div>
+          <label for="lastName" class="block font-semibold text-[#333] mb-1">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition" />
+        </div>
+        <div>
+          <label for="service" class="block font-semibold text-[#333] mb-1">Select Your Services</label>
+          <select id="service" name="service" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition">
+            <option value="">Select</option>
+            <option value="consultation">Consultation</option>
+            <option value="radiology">Radiology</option>
+            <option value="laboratory">Laboratory</option>
+            <option value="training">Training</option>
+          </select>
+        </div>
+        <div>
+          <label for="phone" class="block font-semibold text-[#333] mb-1">Phone</label>
+          <input type="tel" id="phone" name="phone" pattern="[0-9\-\+\s\(\)]{7,}" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition" placeholder="e.g. (123) 456-7890" />
+        </div>
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label for="date" class="block font-semibold text-[#333] mb-1">Date</label>
+            <input type="date" id="date" name="date" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition" />
+          </div>
+          <div class="flex-1">
+            <label for="time" class="block font-semibold text-[#333] mb-1">Time</label>
+            <input type="time" id="time" name="time" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition" />
+          </div>
+        </div>
+        <div>
+          <label for="message" class="block font-semibold text-[#333] mb-1">Message</label>
+          <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-[#007BFF] text-white font-bold py-3 rounded-md shadow hover:bg-blue-700 transition">Book Now</button>
+      </form>
+      <div id="formSuccess" class="hidden mt-4 text-green-600 font-semibold text-center">Thank you! Your appointment has been submitted.</div>
+    </div>
+  </div>
+</section>
+<!-- Make An Appointment Section End -->
+
     <!-- Map Section Start -->
     <section style="padding: 0 1rem; background: #fff; display: block;">
       <div class="w-full flex justify-center">
@@ -952,5 +1137,38 @@
         window.addEventListener('resize', () => updateArc(scrollPercent));
       });
     </script>
+
+<script>
+// Appointment form validation and success message
+const form = document.getElementById('appointmentForm');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+    const firstName = form.firstName;
+    const phone = form.phone;
+    // Reset styles
+    [firstName, phone].forEach(f => f && (f.style.borderColor = '#ddd'));
+    // Validate first name
+    if (!firstName.value.trim()) {
+      firstName.style.borderColor = 'red';
+      valid = false;
+    }
+    // Validate phone (if not empty)
+    if (phone.value && !phone.checkValidity()) {
+      phone.style.borderColor = 'red';
+      valid = false;
+    }
+    if (valid) {
+      form.reset();
+      document.getElementById('formSuccess').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('formSuccess').classList.add('hidden');
+      }, 4000);
+    }
+  });
+}
+</script>
+
   </body>
 </html>
