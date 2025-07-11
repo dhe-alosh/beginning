@@ -494,6 +494,14 @@
             class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
             >Login</a
           >
+          <!-- Replace your current Inverse button in the nav with this icon button -->
+<button id="themeToggle" class="ml-4 p-2 rounded-full border border-white bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-center" aria-label="Toggle theme">
+  <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <!-- Sun icon (default, for light mode) -->
+    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+    <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+  </svg>
+</button>
         </nav>
       </div>
     </header>
@@ -1111,7 +1119,7 @@
 
      <footer id="contact"
   class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 text-white py-8 border-t-8 border-blue-300 shadow-2xl"
-  style="background: linear-gradient(rgba(16, 37, 89, 0.85), rgba(49, 130, 206, 0.85)), url('img/map_bg.jpeg') center center / cover no-repeat;">
+  style="background: linear-gradient(rgba(16, 37, 89, 0.95), rgba(30, 41, 59, 0.95)), url('img/footer.jpg') center center / cover no-repeat;">
       <div class="container mx-auto px-2">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6 text-xs">
           <!-- Left: Company Info -->
@@ -1421,5 +1429,130 @@
         });
       }
     </script>
+    <script>
+      // Theme toggle logic
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const body = document.body;
+      const header = document.getElementById('header');
+      let darkMode = false;
+
+      function setDarkTheme() {
+        body.classList.add('dark-theme');
+        header.classList.add('dark-theme');
+        // Moon icon for dark/gray mode
+        themeIcon.innerHTML = `
+      <path stroke="currentColor" stroke-width="2" fill="none"
+        d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
+    `;
+        darkMode = true;
+      }
+      function setLightTheme() {
+        body.classList.remove('dark-theme');
+        header.classList.remove('dark-theme');
+        // Sun icon for light mode
+        themeIcon.innerHTML = `
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    `;
+        darkMode = false;
+      }
+      themeToggle.addEventListener('click', () => {
+        if (!darkMode) {
+          setDarkTheme();
+        } else {
+          setLightTheme();
+        }
+      });
+    </script>
+
+    <!-- Add these styles to your <style> section -->
+    <style>
+      body.dark-theme {
+        background: #23272f !important;
+        color: #f3f4f6 !important;
+      }
+      body.dark-theme .bg-white,
+      body.dark-theme .bg-gray-50,
+      body.dark-theme .bg-blue-600,
+      body.dark-theme .bg-cyan-400,
+      body.dark-theme .bg-white\/10,
+      body.dark-theme .bg-white\/20 {
+        background-color: #2d323c !important;
+        color: #f3f4f6 !important;
+ }
+      body.dark-theme .text-gray-800,
+      body.dark-theme .text-black,
+      body.dark-theme .text-blue-600,
+      body.dark-theme .text-blue-700 {
+        color: #f3f4f6 !important;
+      }
+      body.dark-theme .service-card,
+      body.dark-theme .our-services-card,
+      body.dark-theme .mission-vision-card,
+      body.dark-theme .partner-card {
+        background-color: #2d323c !important;
+        color: #f3f4f6 !important;
+      }
+      body.dark-theme input,
+      body.dark-theme select,
+      body.dark-theme textarea {
+        background: #353945 !important;
+        color: #f3f4f6 !important;
+        border-color: #444 !important;
+      }
+      body.dark-theme .shadow,
+      body.dark-theme .shadow-lg,
+      body.dark-theme .shadow-2xl {
+        box-shadow: 0 2px 16px 0 rgba(0,0,0,0.7) !important;
+      }
+      body.dark-theme .bg-gradient-to-r,
+      body.dark-theme footer#contact {
+        background: linear-gradient(rgba(35, 39, 47, 0.95), rgba(45, 50, 60, 0.95)), url('img/footer.jpg') center center / cover no-repeat !important;
+      }
+      body.dark-theme .hero-container {
+        background: linear-gradient(rgba(35,39,47,0.7), rgba(45,50,60,0.7)), url('img/hero.jpg') center center/cover no-repeat !important;
+      }
+      body.dark-theme .text-white {
+        color: #f3f4f6 !important;
+      }
+      body.dark-theme .bg-white {
+        background-color: #353945 !important;
+      }
+      body.dark-theme .border-blue-200,
+      body.dark-theme .border-blue-300,
+      body.dark-theme .border-blue-400 {
+        border-color: #444 !important;
+      }
+      body.dark-theme .hover\:bg-blue-700:hover {
+        background-color: #444 !important;
+      }
+      body.dark-theme .bg-blue-600 {
+        background-color: #444 !important;
+      }
+      body.dark-theme .bg-white\/10 {
+        background-color: rgba(45,50,60,0.7) !important;
+      }
+      body.dark-theme .bg-white\/20 {
+        background-color: rgba(45,50,60,0.9) !important;
+      }
+      body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center,
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center *,
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center input,
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center select,
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center textarea {
+  background: #fff !important;
+  color: #23272f !important;
+  border-color: #ddd !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10) !important;
+}
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center label {
+  color: #333 !important;
+}
+body.dark-theme .w-full.max-w-md.min-w-0.mx-auto.bg-white.rounded-xl.shadow-lg.p-6.flex.flex-col.justify-center button {
+  background: #007BFF !important;
+  color: #fff !important;
+}
+    </style>
   </body>
 </html>
