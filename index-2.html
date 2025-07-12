@@ -48,7 +48,7 @@
       }
       header.scrolled h1,
       header.scrolled a {
-        color: #1e40af;
+        color: #fff;
       }
       header .nav-link.active {
         position: relative;
@@ -475,8 +475,10 @@
     <header id="header">
       <div class="container mx-auto flex justify-between items-center py-4 px-4">
         <h1 class="text-2xl font-bold flex items-center" style="color:white;">
+          <!-- <a href="index-2.html"> -->
           <img src="img/logo1.png" alt="EMR" class="w-6 h-6 rounded-full shadow-lg mr-2 inline-block align-middle">
           <span class="inline-block align-middle" style="color:white;">emr</span>
+          <!-- </a> -->
         </h1>
         <nav class="flex items-center space-x-6">
           <a href="index-2.html" class="nav-link">Home</a>
@@ -494,13 +496,18 @@
             class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
             >Login</a
           >
-          <!-- Replace your current Inverse button in the nav with this icon button -->
-<button id="themeToggle" class="ml-4 p-2 rounded-full border border-white bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-center" aria-label="Toggle theme">
-  <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <!-- Sun icon (default, for light mode) -->
-    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
-    <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-  </svg>
+          <!-- Replace your current theme toggle button with this: -->
+<button id="themeToggle" class="ml-4 flex items-center focus:outline-none" aria-label="Toggle theme">
+  <span class="relative inline-block w-12 h-6 align-middle select-none transition">
+    <span class="block w-12 h-6 bg-gray-400 rounded-full shadow-inner transition-colors duration-300" id="switchTrack"></span>
+    <span id="switchThumb" class="absolute left-0 top-0 w-6 h-6 bg-white border border-gray-300 rounded-full shadow flex items-center justify-center transition-transform duration-300">
+      <!-- Sun icon by default -->
+      <svg id="switchIcon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-400 transition-opacity duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </span>
+  </span>
 </button>
         </nav>
       </div>
@@ -512,7 +519,7 @@
         class="relative container mx-auto h-full flex flex-col justify-center items-center text-center px-4"
       >
         <h2 class="text-5xl font-bold text-white mb-4">
-          Revolutionize Healthcare with EMR
+          Revolutionize Healthcare system with <span style="color: #40b2e6; font-family: Verdana, Geneva, Tahoma, sans-serif !important;">FMCA EMR</span> unit
         </h2>
         <p class="text-xl text-white mb-6 max-w-2xl">
           Secure, efficient, and accessible electronic medical records for
@@ -573,9 +580,7 @@
                 <div class="text-2xl mb-4">🎯</div>
                 <h3 class="text-base font-semibold mb-2">Our Mission</h3>
                 <p class="text-sm">
-                  To provide innovative healthcare solutions that enhance
-                  patient care and streamline medical processes with
-                  cutting-edge technology.
+                  Through the efficient application of Electronic Medical Records in the Centre, the EMR Unit shall reduce patient waiting time, ensure data quality and security and block all financial leakages.
                 </p>
               </div>
             </div>
@@ -589,9 +594,7 @@
                 <div class="text-2xl mb-4">👁️</div>
                 <h3 class="text-base font-semibold mb-2">Our Vision</h3>
                 <p class="text-sm">
-                  To lead the future of healthcare by delivering accessible,
-                  secure, and efficient electronic medical record systems
-                  worldwide.
+                  The vision of the EMR unit is to effectively provide quality and timely clinical services to patients, improve revenue generation at FMC Abeokuta, and greatly improve satisfaction of patients.
                 </p>
               </div>
             </div>
@@ -896,8 +899,7 @@
               <div>
                 <h3 class="font-bold text-xl text-white mb-2">Easy Booking</h3>
                 <p class="text-base text-white/80">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
+                  Ease to book an appointment with us.
                 </p>
               </div>
             </div>
@@ -920,10 +922,10 @@
                 </svg>
               </div>
               <div>
-                <h3 class="font-bold text-xl text-white mb-2">Experience</h3>
+                <h3 class="font-bold text-xl text-white mb-2">Working Hours</h3>
                 <p class="text-base text-white/80">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
+                  Mon - Fri: 9am - 6pm <br />
+                  Sat: 9am - 4pm
                 </p>
               </div>
             </div>
@@ -947,11 +949,15 @@
               </div>
               <div>
                 <h3 class="font-bold text-xl text-white mb-2">
-                  Flexible Schedule
+                  Available Clinics
                 </h3>
                 <p class="text-base text-white/80">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
+                  <ul>
+                    <li class="text-base text-white/80">G.O.P.D</li>
+                    <li class="text-base text-white/80">P.O.P.D</li>
+                    <li class="text-base text-white/80">Radiology</li>
+                    <li class="text-base text-white/80">Physiotherapy</li>
+                  </ul>
                 </p>
               </div>
             </div>
@@ -1010,6 +1016,17 @@
             <div>
               <label for="lastName" class="block font-semibold text-[#333] mb-1"
                 >Last Name</label
+              >
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                class="w-full px-4 py-2 border border-[#ddd] rounded-md focus:outline-none focus:ring-2 focus:ring-[#007BFF] transition"
+              />
+            </div>
+            <div>
+              <label for="lastName" class="block font-semibold text-[#333] mb-1"
+                >email</label
               >
               <input
                 type="text"
@@ -1099,6 +1116,35 @@
       </div>
     </section>
 
+    <section id="news" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Latest News & Updates</h2>
+        <div class="grid gap-8 md:grid-cols-3">
+          <!-- News Item 1 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
+            <img src="https://via.placeholder.com/400x200?text=News+Image+1" alt="News 1" class="rounded-lg mb-4 w-full h-40 object-cover">
+            <h3 class="text-xl font-semibold mb-2 text-blue-700">EMR Websie Upgrade Completed</h3>
+            <p class="text-gray-600 mb-4">We are excited to announce the successful upgrade of our Electronic Medical Records website, bringing faster access and improved security for all users.</p>
+            <span class="text-xs text-gray-400">July 2025</span>
+          </div>
+          <!-- News Item 2 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
+            <img src="https://via.placeholder.com/400x200?text=News+Image+2" alt="News 2" class="rounded-lg mb-4 w-full h-40 object-cover">
+            <h3 class="text-xl font-semibold mb-2 text-blue-700">New Radiology UI interface set to be Launched</h3>
+            <p class="text-gray-600 mb-4">Our radiology department now offers advanced imaging services fully integrated with the EMR platform for seamless patient care.</p>
+            <span class="text-xs text-gray-400">June 2025</span>
+          </div>
+          <!-- News Item 3 -->
+          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
+            <img src="https://via.placeholder.com/400x200?text=News+Image+3" alt="News 3" class="rounded-lg mb-4 w-full h-40 object-cover">
+            <h3 class="text-xl font-semibold mb-2 text-blue-700">Staff Training Workshop</h3>
+            <p class="text-gray-600 mb-4">A successful EMR training workshop was held for all clinical staff, ensuring everyone is equipped to use the latest features.</p>
+            <span class="text-xs text-gray-400">May 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Map Section Start -->
     <section style="padding: 0 1rem; background: #fff; display: block;">
       <div class="w-full flex justify-center">
@@ -1128,7 +1174,7 @@
               <img src="img/logo1.png" alt="EMR Logo" class="w-6 h-6 rounded-full shadow-lg mr-1">
               <span class="text-base font-extrabold tracking-tight font-sans">emr</span>
             </div>
-            <p class="text-blue-100 leading-tight mb-1 font-light">Innovative healthcare solutions for a better tomorrow.</p>
+            <p class="text-blue-100 leading-tight mb-1 font-light">At FMC abeokuta, we believe that collaboration is key to achieving true healthcare transformation We partner closely with our clients to understand their unique needs and challenges, and we provide ongoing support and training to ensure they maximize the value of our solutions. We invite you to explore our website, learn more about our innovative EMR solutions, and discover how we can help you transform your practice and deliver exceptional care to your patients.</p>
             <div class="flex space-x-2 mt-0.5">
               <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 8.807 4.1 6.884 1.671 3.965c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.868 9.868 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></a>
               <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
@@ -1200,7 +1246,7 @@
           </div>
         </div>
         <div class="mt-4 border-t border-blue-400 pt-2 text-center text-blue-100 text-[10px] tracking-wide font-light">
-          <p>© 2025 <span class="font-semibold">FMCAEMR</span>. All rights reserved. Powered by <span class="font-semibold">IT set 25'</span>. Led by <span class="font-semibold">alosh.inc</span></p>
+          <p>© 2024-2025 <span class="font-semibold">FMCAEMR</span>. All rights reserved. Powered by <span class="font-semibold">IT set 25'</span>. Led by <span class="font-semibold">alosh.inc</span></p>
         </div>
       </div>
     </footer>
@@ -1311,7 +1357,7 @@
 
         function updateArc(scrollPercent) {
           const centerIndex = scrollPercent * (n - 1);
-          cards.forEach((card, i) => {
+                   cards.forEach((card, i) => {
             if (card.matches(':hover')) return;
             const rel = i - centerIndex;
             const angle = rel * (maxAngle / (n - 1));
@@ -1432,7 +1478,9 @@
     <script>
       // Theme toggle logic
       const themeToggle = document.getElementById('themeToggle');
-      const themeIcon = document.getElementById('themeIcon');
+      const switchThumb = document.getElementById('switchThumb');
+      const switchTrack = document.getElementById('switchTrack');
+      const switchIcon = document.getElementById('switchIcon');
       const body = document.body;
       const header = document.getElementById('header');
       let darkMode = false;
@@ -1440,21 +1488,29 @@
       function setDarkTheme() {
         body.classList.add('dark-theme');
         header.classList.add('dark-theme');
-        // Moon icon for dark/gray mode
-        themeIcon.innerHTML = `
+        switchThumb.style.transform = 'translateX(24px)';
+        switchTrack.style.backgroundColor = '#4b5563'; // dark gray
+        // Moon icon
+        switchIcon.innerHTML = `
       <path stroke="currentColor" stroke-width="2" fill="none"
         d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
     `;
+        switchIcon.classList.remove('text-yellow-400');
+        switchIcon.classList.add('text-gray-500');
         darkMode = true;
       }
       function setLightTheme() {
         body.classList.remove('dark-theme');
         header.classList.remove('dark-theme');
-        // Sun icon for light mode
-        themeIcon.innerHTML = `
+        switchThumb.style.transform = 'translateX(0)';
+        switchTrack.style.backgroundColor = '#d1d5db'; // light gray
+        // Sun icon
+        switchIcon.innerHTML = `
       <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
       <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
     `;
+        switchIcon.classList.remove('text-gray-500');
+        switchIcon.classList.add('text-yellow-400');
         darkMode = false;
       }
       themeToggle.addEventListener('click', () => {
@@ -1464,6 +1520,8 @@
           setLightTheme();
         }
       });
+      // Set initial state
+      setLightTheme();
     </script>
 
     <!-- Add these styles to your <style> section -->
@@ -1511,7 +1569,7 @@
         background: linear-gradient(rgba(35, 39, 47, 0.95), rgba(45, 50, 60, 0.95)), url('img/footer.jpg') center center / cover no-repeat !important;
       }
       body.dark-theme .hero-container {
-        background: linear-gradient(rgba(35,39,47,0.7), rgba(45,50,60,0.7)), url('img/hero.jpg') center center/cover no-repeat !important;
+        background: linear-gradient(rgba(35,39,47, 0.3), rgba(45,50,60,0.3)), url('img/hero.jpg') center center/cover no-repeat !important;
       }
       body.dark-theme .text-white {
         color: #f3f4f6 !important;
