@@ -223,43 +223,90 @@ footer#contact .container {
 
 /* Dark Theme Styles */
 body.dark-theme {
-  background-color: #181e2a;
-  color: #e5e7eb;
+  background-color: #101624 !important;
+  color: #e5e7eb !important;
 }
 .dark-theme .main-container {
-  background: #232b3b;
-  color: #e5e7eb;
+  background: #1a2233 !important;
+  color: #e5e7eb !important;
+  box-shadow: 0 0 16px rgba(0,0,0,0.45) !important;
 }
-.dark-theme .contact-info a {
-  color: #60a5fa;
+.dark-theme .contact-info a,
+.dark-theme .form-container form button {
+  color: #60a5fa !important;
+}
+.dark-theme .contact-info {
+  color: #e5e7eb !important;
 }
 .dark-theme .form-group input,
 .dark-theme .form-group textarea {
-  background: #1e293b;
-  color: #e5e7eb;
-  border-color: #334155;
+  background: #232b3b !important;
+  color: #e5e7eb !important;
+  border-color: #334155 !important;
 }
-.dark-theme .form-container form button {
-  color: #60a5fa;
+.dark-theme .form-group input::placeholder,
+.dark-theme .form-group textarea::placeholder {
+  color: #94a3b8 !important;
+}
+.dark-theme .form-container {
+  background: transparent !important;
 }
 .dark-theme .map-section {
-  background: #232b3b;
+  background: #1a2233 !important;
 }
-.dark-theme footer#contact {
-  background: linear-gradient(rgba(16, 37, 89, 0.98), rgba(30, 41, 59, 0.98)), url('img/footer.jpg') center center / cover no-repeat;
+.dark-theme .header-container {
+  background: linear-gradient(rgba(16,37,89,0.92),rgba(30,41,59,0.92)), url('img/slider31.png') center center / cover no-repeat !important;
 }
-.dark-theme footer#contact .container {
-  color: #cbd5e1;
+.dark-theme .header-container h1 {
+  color: #60a5fa !important;
+}
+.dark-theme .header-container p {
+  color: #cbd5e1 !important;
 }
 .dark-theme header,
 .dark-theme header.scrolled {
-  background: rgba(30, 41, 59, 0.95);
+  background: rgba(16, 23, 38, 0.97) !important;
   backdrop-filter: blur(12px);
 }
 .dark-theme header h1,
 .dark-theme header a {
-  color: #e5e7eb;
+  color: #e5e7eb !important;
 }
+.dark-theme header .nav-link.active {
+  color: #38bdf8 !important;
+}
+.dark-theme .dropdown-content {
+  background-color: #232b3b !important;
+}
+.dark-theme .dropdown-content a {
+  color: #e5e7eb !important;
+}
+.dark-theme .dropdown-content a:hover {
+  background-color: #334155 !important;
+}
+.dark-theme footer#contact {
+  background: linear-gradient(rgba(16, 37, 89, 0.98), rgba(30, 41, 59, 0.98)), url('img/footer.jpg') center center / cover no-repeat !important;
+}
+.dark-theme footer#contact .container {
+  color: #cbd5e1 !important;
+}
+.dark-theme .partners-slider img {
+  background: #232b3b !important;
+  border-color: #334155 !important;
+}
+.dark-theme button,
+.dark-theme .form-container form button {
+  background: #232b3b !important;
+  color: #60a5fa !important;
+  border: 1px solid #334155 !important;
+}
+.dark-theme .form-group input:focus,
+.dark-theme .form-group textarea:focus {
+  border-color: #60a5fa !important;
+  outline: none !important;
+}
+
+/* --- End Improved Dark Theme Styles --- */
     </style>
   </head>
   <body>
@@ -341,6 +388,12 @@ body.dark-theme {
     </header>
     <!-- NAV BAR END -->
 
+    <!-- ...existing code... -->
+  <div style="width:100%; text-align:center; margin-bottom: 32px;  padding-bottom:10px; padding-top:20px; margin-top: 100px; background: linear-gradient(rgba(64,178,230,0.85),rgba(255,255,255,0.92)), url('img/slider31.png') center center / cover no-repeat;" class="header-container">
+    <h1 style="font-size:2.5rem; font-weight:bold; margin:0; color:#40b2e6;">Contact Us</h1>
+    <p style="font-size:1.1rem; color:#555; margin-top:8px;">We'd love to hear from you. Reach out using the form or details below.</p>
+  </div>
+<!-- ...existing code... -->
 
     <div class="main-container" style="margin-top: 80px">
       <div class="contact-info">
