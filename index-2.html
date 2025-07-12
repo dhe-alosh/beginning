@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FMCA_emr</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
@@ -468,6 +469,74 @@
         overflow-x: hidden !important;
         font-family: sans-serif, Arial, Helvetica, sans-serif;
       }
+
+
+      /* News Section */
+
+      /* Add this to your <style> section (after your other card styles) */
+.news-card {
+  background-color: #1e40af;
+  color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 18px 0 rgba(0,0,0,0.18);
+  transition: all 0.3s;
+  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.news-card:hover {
+  background-color: #3b82f6;
+  color: #1e40af;
+  box-shadow: 0 8px 32px 0 rgba(30,64,175,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+  transform: scale(1.05);
+}
+.news-card img {
+  border-radius: 0.5rem 0.5rem 0 0;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  width: 100%;
+  height: 160px;
+  box-shadow: 0 2px 8px 0 rgba(30,64,175,0.10);
+}
+.news-card h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.news-card p {
+  color: #e0e7ff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  flex: 1 1 auto;
+}
+.news-card span {
+  color: #c7d2fe;
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+@media (max-width: 768px) {
+  .news-card img {
+    height: 120px;
+  }
+}
+
+
+/* ...existing code... */
+.news-card .mission-content {
+  background-color: #4b5563; /* Gray background for inner content */
+  padding: 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+.news-card .mission-content:hover {
+  background-color: white;    /* White background on hover */
+  color: #1e40af;             /* Dark blue text on hover */
+  transform: scale(1.05);     /* Scale out effect on hover */
+}
+/* ...existing code... */
     </style>
   </head>
 
@@ -486,7 +555,7 @@
           <div class="dropdown">
             <a href="index-2.html#services" class="dropdown-toggle nav-link">Services</a>
             <div class="dropdown-content">
-              <a href="index-2.html#pacs">PACS</a>
+              <a href="https://techxploit.com.ng/">PACS</a>
               <a href="index-2.html#appointment">Appointment</a>
             </div>
           </div>
@@ -897,9 +966,9 @@
                 </svg>
               </div>
               <div>
-                <h3 class="font-bold text-xl text-white mb-2">Easy Booking</h3>
+                <h3 class="font-bold text-xl text-white mb-2">Easy Booking with Qualified Doctor</h3>
                 <p class="text-base text-white/80">
-                  Ease to book an appointment with us.
+                  Book an easy appointment with us, and get the best treatment with our qualified doctors.
                 </p>
               </div>
             </div>
@@ -924,8 +993,10 @@
               <div>
                 <h3 class="font-bold text-xl text-white mb-2">Working Hours</h3>
                 <p class="text-base text-white/80">
+                  Emergency services available 24/7. <br />
+                  <strong>General Hours:</strong> <br />
                   Mon - Fri: 9am - 6pm <br />
-                  Sat: 9am - 4pm
+                  Sat - Sun: 9am - 4pm
                 </p>
               </div>
             </div>
@@ -979,11 +1050,10 @@
               </div>
               <div>
                 <h3 class="font-bold text-xl text-white mb-2">
-                  Best Price Guarantee
+                  Best Experince Guarantee
                 </h3>
                 <p class="text-base text-white/80">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
+                  We are committed to providing the best experience for our patients.
                 </p>
               </div>
             </div>
@@ -1116,34 +1186,49 @@
       </div>
     </section>
 
-    <section id="news" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Latest News & Updates</h2>
-        <div class="grid gap-8 md:grid-cols-3">
-          <!-- News Item 1 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
-            <img src="https://via.placeholder.com/400x200?text=News+Image+1" alt="News 1" class="rounded-lg mb-4 w-full h-40 object-cover">
-            <h3 class="text-xl font-semibold mb-2 text-blue-700">EMR Websie Upgrade Completed</h3>
-            <p class="text-gray-600 mb-4">We are excited to announce the successful upgrade of our Electronic Medical Records website, bringing faster access and improved security for all users.</p>
-            <span class="text-xs text-gray-400">July 2025</span>
-          </div>
-          <!-- News Item 2 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
-            <img src="https://via.placeholder.com/400x200?text=News+Image+2" alt="News 2" class="rounded-lg mb-4 w-full h-40 object-cover">
-            <h3 class="text-xl font-semibold mb-2 text-blue-700">New Radiology UI interface set to be Launched</h3>
-            <p class="text-gray-600 mb-4">Our radiology department now offers advanced imaging services fully integrated with the EMR platform for seamless patient care.</p>
-            <span class="text-xs text-gray-400">June 2025</span>
-          </div>
-          <!-- News Item 3 -->
-          <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col hover:shadow-2xl transition">
-            <img src="https://via.placeholder.com/400x200?text=News+Image+3" alt="News 3" class="rounded-lg mb-4 w-full h-40 object-cover">
-            <h3 class="text-xl font-semibold mb-2 text-blue-700">Staff Training Workshop</h3>
-            <p class="text-gray-600 mb-4">A successful EMR training workshop was held for all clinical staff, ensuring everyone is equipped to use the latest features.</p>
-            <span class="text-xs text-gray-400">May 2025</span>
-          </div>
+   <section id="news" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Latest News & Updates</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- News Item 1 -->
+      <div class="news-card mission-vision-card">
+        <div class="mission-content">
+          <img src="https://via.placeholder.com/400x200?text=News+Image+1" alt="News 1" class="w-full h-32 object-cover mb-4 rounded-t-lg">
+          <div class="text-2xl mb-4">📰</div>
+          <h3 class="text-base font-semibold mb-2">EMR Website Upgrade Completed</h3>
+          <p class="text-sm">
+            We are excited to announce the successful upgrade of our Electronic Medical Records website, bringing faster access and improved security for all users.
+          </p>
+          <span>July 2025</span>
         </div>
       </div>
-    </section>
+      <!-- News Item 2 -->
+      <div class="news-card mission-vision-card">
+        <div class="mission-content">
+          <img src="https://via.placeholder.com/400x200?text=News+Image+2" alt="News 2" class="w-full h-32 object-cover mb-4 rounded-t-lg">
+          <div class="text-2xl mb-4">🖼️</div>
+          <h3 class="text-base font-semibold mb-2">New Radiology UI Interface Set to be Launched</h3>
+          <p class="text-sm">
+            Our radiology department now offers advanced imaging services fully integrated with the EMR platform for seamless patient care.
+          </p>
+          <span>June 2025</span>
+        </div>
+      </div>
+      <!-- News Item 3 -->
+      <div class="news-card mission-vision-card">
+        <div class="mission-content">
+          <img src="https://via.placeholder.com/400x200?text=News+Image+3" alt="News 3" class="w-full h-32 object-cover mb-4 rounded-t-lg">
+          <div class="text-2xl mb-4">🎓</div>
+          <h3 class="text-base font-semibold mb-2">Staff Training Workshop</h3>
+          <p class="text-sm">
+            A successful EMR training workshop was held for all clinical staff, ensuring everyone is equipped to use the latest features.
+          </p>
+          <span>May 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Map Section Start -->
     <section style="padding: 0 1rem; background: #fff; display: block;">
@@ -1291,7 +1376,7 @@
             (href.includes("#" + activeId))
           ) {
             link.classList.add("active");
-          }
+                   }
         });
       }
       window.addEventListener("scroll", setActiveNav);

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .main-container {
+        display: flex;
+        width: 80%;
+        max-width: 1200px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 200px;
+        margin-bottom: 100px;
+        margin-left: auto;   /* Center horizontally */
+        margin-right: auto;  /* Center horizontally */
+        border-radius: 20px;
+      }
+      .contact-info,
+      .form-container {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .contact-info{
+       text-align: left;
+      }
+
+      .contact-info h2,
+      .form-container h2 {
+        margin-top: 0;
+        font-size: 1.5rem; /* Make h2 text bigger */
+        font-weight: bold;
+        text-align: center;
+      }
+      .contact-info p {
+        margin: 10px 0;
+      }
+      .contact-info a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .contact-info span {
+        margin-right: 10px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .form-group input {
+        height: 40px;
+      }
+      .form-group textarea {
+        height: 100px;
+        resize: none;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+      }
+      button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        align-self: flex-end;
+        padding: 10px;
+      }
+      @media (max-width: 768px) {
+        .main-container {
+          flex-direction: column;
+          width: 100%;
+        }
+        .contact-info,
+        .form-container {
+          width: 100%;
+        }
+      }
+      /* NAV BAR & FOOTER CSS (extract) */
+
+/* Header/Nav */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  transition: all 0.3s ease;
+  background: transparent;
+  backdrop-filter: none;
+}
+header.scrolled {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(30,64,175,0.07);
+}
+header h1,
+header a {
+  color: #3d3d3d;
+  transition: color 0.3s;
+}
+header.scrolled h1,
+header.scrolled a {
+  color: #fff;
+}
+header .nav-link.active {
+  position: relative;
+  color: #38bdf8 !important;
+}
+header .nav-link.active::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  margin-top: 4px;
+  width: 28px;
+  height: 7px;
+  border-radius: 10px;
+  background: #38bdf8;
+  opacity: 0.85;
+  transition: width 0.2s;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1e40af;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 0.5rem;
+  top: 100%;
+  left: 0;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #3b82f6;
+}
+header.scrolled .dropdown-content {
+  background-color: white;
+}
+header.scrolled .dropdown-content a {
+  color: #1e40af;
+}
+header.scrolled .dropdown-content a:hover {
+  background-color: #e0e7ff;
+}
+
+/* Theme Toggle Switch (in nav) */
+#themeToggle {
+  /* Uses Tailwind utility classes in HTML */
+}
+
+
+      .map-section {
+        padding: 0 1rem;
+        background: #fff;
+        display: block;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .map-effect {
+        border-radius: 20px;
+        border: 0;
+        min-width: 300px;
+        max-width: 18000px;
+        width: 100%;
+        transition: box-shadow 0.3s ease; /* Only animate box-shadow, not all */
+        box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
+      }
+      /* Remove the hover scale and color change to prevent shaking */
+      .map-effect:hover {
+        /* No transform or color change on hover */
+      }
+
+
+      footer#contact {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+  min-height: 220px;
+  background: linear-gradient(rgba(16, 37, 89, 0.95), rgba(30, 41, 59, 0.95)), url('img/footer.jpg') center center / cover no-repeat;
+}
+footer#contact .container {
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  footer#contact {
+    min-height: 220px;
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  footer#contact .container {
+    font-size: 1.125rem;
+  }
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+  background-color: #181e2a;
+  color: #e5e7eb;
+}
+.dark-theme .main-container {
+  background: #232b3b;
+  color: #e5e7eb;
+}
+.dark-theme .contact-info a {
+  color: #60a5fa;
+}
+.dark-theme .form-group input,
+.dark-theme .form-group textarea {
+  background: #1e293b;
+  color: #e5e7eb;
+  border-color: #334155;
+}
+.dark-theme .form-container form button {
+  color: #60a5fa;
+}
+.dark-theme .map-section {
+  background: #232b3b;
+}
+.dark-theme footer#contact {
+  background: linear-gradient(rgba(16, 37, 89, 0.98), rgba(30, 41, 59, 0.98)), url('img/footer.jpg') center center / cover no-repeat;
+}
+.dark-theme footer#contact .container {
+  color: #cbd5e1;
+}
+.dark-theme header,
+.dark-theme header.scrolled {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(12px);
+}
+.dark-theme header h1,
+.dark-theme header a {
+  color: #e5e7eb;
+}
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div
+        class="container mx-auto flex justify-between items-center py-4 px-4"
+      >
+        <h1 class="text-2xl font-bold flex items-center" style="color: white">
+          <img
+            src="img/logo1.png"
+            alt="EMR"
+            class="w-6 h-6 rounded-full shadow-lg mr-2 inline-block align-middle"
+          />
+          <span class="inline-block align-middle" style="color: white"
+            >emr</span
+          >
+        </h1>
+        <nav class="flex items-center space-x-6">
+          <a href="index-2.html" class="nav-link">Home</a>
+<a href="index-2.html#mission" class="nav-link">Our Mission</a>
+<div class="dropdown">
+  <a href="index-2.html#services" class="dropdown-toggle nav-link">Services</a>
+  <div class="dropdown-content">
+    <a href="https://techxploit.com.ng/">PACS</a>
+    <a href="index-2.html#appointment">Appointment</a>
+  </div>
+</div>
+<a href="Contact.html" class="nav-link active">Contact</a>
+<a
+  href="#"
+  class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+>Login</a
+>
+          <!-- Theme Toggle Switch -->
+          <button
+            id="themeToggle"
+            class="ml-4 flex items-center focus:outline-none"
+            aria-label="Toggle theme"
+          >
+            <span
+              class="relative inline-block w-12 h-6 align-middle select-none transition"
+            >
+              <span
+                class="block w-12 h-6 bg-gray-400 rounded-full shadow-inner transition-colors duration-300"
+                id="switchTrack"
+              ></span>
+              <span
+                id="switchThumb"
+                class="absolute left-0 top-0 w-6 h-6 bg-white border border-gray-300 rounded-full shadow flex items-center justify-center transition-transform duration-300"
+              >
+                <!-- Sun icon by default -->
+                <svg
+                  id="switchIcon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-yellow-400 transition-opacity duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <path
+                    stroke="currentColor"
+                    stroke-width="2"
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <!-- NAV BAR END -->
+
+
+    <div class="main-container" style="margin-top: 80px">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><span>📍</span> Olabisi Onabanjo Way, (P.M.B 3031, Sapon), Abeokuta, Ogun State, Nigeria.</p>
+        <p><span>📞</span> +2348033806574, +2348034919305</p>
+        <p>
+          <span>📧</span>
+          <a href="mailto:fmca.emrunit@fmcabeokuta.org">fmca.emrunit@fmcabeokuta.org, emrfmca@gmail.com</a>
+        </p>
+        <p><span>🌐</span> <a href="https://fmcaemr.com">fmcaemr.com</a></p>
+      </div>
+      <div class="form-container">
+        <h2>Get In Touch</h2>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group flex gap-2">
+            <input type="text" placeholder="Your firstname" required />
+            <input type="text" placeholder="Your lastname" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your email address" required />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Your subject of this message"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Say something about us" required></textarea>
+          </div>
+          <button type="submit">Submit ➕</button>
+        </form>
+      </div>
+      <section class="map-section">
+        <div class="w-full flex justify-center">
+          <iframe
+            src="https://www.google.com/maps?q=Federal+Medical+Centre+Abeokuta&output=embed"
+            width="100%"
+            height="300px"
+            class="map-effect"
+            allowfullscreen=""
+            loading="lazy"
+            title="Federal Medical Centre Abeokuta Map"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+
+
+<footer id="contact"
+  class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 text-white py-8 border-t-8 border-blue-300 shadow-2xl"
+  style="background: linear-gradient(rgba(16, 37, 89, 0.95), rgba(30, 41, 59, 0.95)), url('img/footer.jpg') center center / cover no-repeat;">
+  <div class="container mx-auto px-2">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6 text-xs">
+      <!-- Left: Company Info -->
+      <div class="flex flex-col items-start md:w-1/3">
+        <div class="flex items-center mb-1">
+          <img src="img/logo1.png" alt="EMR Logo" class="w-6 h-6 rounded-full shadow-lg mr-1">
+          <span class="text-base font-extrabold tracking-tight font-sans">emr</span>
+        </div>
+        <p class="text-blue-100 leading-tight mb-1 font-light">At FMC abeokuta, we believe that collaboration is key to achieving true healthcare transformation We partner closely with our clients to understand their unique needs and challenges, and we provide ongoing support and training to ensure they maximize the value of our solutions. We invite you to explore our website, learn more about our innovative EMR solutions, and discover how we can help you transform your practice and deliver exceptional care to your patients.</p>
+        <div class="flex space-x-2 mt-0.5">
+          <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.932 0 .386.045.763.127 1.124C7.728 8.807 4.1 6.884 1.671 3.965c-.423.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.868 9.868 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></a>
+          <a href="#" class="hover:text-blue-300 transition-colors" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
+          <a href="#" class="hover:text-blue-300 transition-colors" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.062-1.867-3.062-1.868 0-2.154 1.459-2.154 2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.844-1.563 3.042 0 3.604 2.002 3.604 4.604v5.592z"/></svg></a>
+        </div>
+      </div>
+      <!-- Center: Partners Slider -->
+      <div class="flex flex-col items-center justify-center md:w-1/3">
+        <h3 class="text-xs font-bold mb-2 tracking-wide text-blue-100 uppercase text-center">Our Partners</h3>
+        <div class="overflow-x-auto whitespace-nowrap flex items-center gap-6 py-2 partners-slider">
+          <div class="inline-block align-middle">
+            <img src="img/techxpl.jpeg" alt="Partner 1 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+          </div>
+          <div class="inline-block align-middle">
+            <img src="img/alosh.jpg" alt="Partner 2 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+          </div>
+          <div class="inline-block align-middle">
+            <img src="img/mamo.jpeg" alt="Partner 3 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+          </div>
+          <div class="inline-block align-middle">
+            <img src="img/DQ.png" alt="Partner 3 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+          </div>
+        </div>
+      </div>
+      <!-- Right: Quick Links & Contact Us with vertical lines at both sides -->
+      <div class="flex flex-row items-stretch md:w-1/3 md:justify-end mt-6 md:mt-0 pr-2">
+        <div class="hidden md:block border-l-2 border-blue-200 h-auto my-2"></div>
+        <div class="flex flex-col justify-between w-full md:w-auto px-6 md:pr-8 md:pl-4">
+          <h3 class="text-xs font-bold mb-1 tracking-wide text-blue-100 uppercase">Quick Links</h3>
+          <ul class="space-y-0.5 text-xs font-medium">
+            <li><a href="#home" class="hover:text-blue-300 transition-colors">Home</a></li>
+            <li><a href="#mission" class="hover:text-blue-300 transition-colors">Our Mission</a></li>
+            <li><a href="#services" class="hover:text-blue-300 transition-colors">Services</a></li>
+            <li><a href="#partners" class="hover:text-blue-300 transition-colors">Partners</a></li>
+            <li><a href="#contact" class="hover:text-blue-300 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div></div>
+        <div class="hidden md:block border-l-2 border-blue-200 h-auto my-2 mx-2"></div>
+        <div class="flex flex-col justify-between w-full md:w-auto px-4 md:pl-2 md:pr-0">
+          <h3 class="text-xs font-bold mb-0 tracking-wide text-blue-100 uppercase">Contact Us</h3>
+          <div class="space-y-0.5 text-xs font-medium">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 8l9 6 9-6" />
+                <rect x="3" y="6" width="18" height="12" rx="2" />
+              </svg>
+              fmca.emrunit@fmcabeokuta.org, emrfmca@gmail.com
+            </div>
+            <div class="flex items-center mt-0">
+              <svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h4.09a2 2 0 0 1 2 1.72l.2 2a2 2 0 0 1-1.1 2.18l-2.2 1.1a16 16 0 0 0 6.29 6.29l1.1-2.2A2 2 0 0 1 17.28 13l2 .2A2 2 0 0 1 21 15.91z"/>
+              </svg>
+              +2348033806574, +2348034919305
+            </div>
+            <div class="flex items-center mt-0">
+              <svg class="w-3 h-3 mr-1 text-blue-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 21s-6-5.686-6-10A6 6 0 0 1 18 11c0 4.314-6 10-6 10z"/>
+                <circle cx="12" cy="11" r="3"/>
+              </svg>
+              Olabisi Onabanjo Way, Abeokuta, Ogun State, Nigeria.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 border-t border-blue-400 pt-2 text-center text-blue-100 text-[10px] tracking-wide font-light">
+      <p>© 2024-2025 <span class="font-semibold">FMCAEMR</span>. All rights reserved. Powered by <span class="font-semibold">IT set 25'</span>. Led by <span class="font-semibold">alosh.inc</span></p>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+    <script>
+      // NAV BAR & FOOTER JAVASCRIPT
+
+// Header scroll effect
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("header");
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+// Active nav indicator
+function setActiveNav() {
+  // If on contact.html, always set Contact as active
+  if (window.location.pathname.toLowerCase().includes('contact.html')) {
+    document.querySelectorAll('header .nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') && link.getAttribute('href').toLowerCase().includes('contact.html')) {
+        link.classList.add('active');
+      }
+    });
+    return;
+  }
+
+  const links = document.querySelectorAll('header .nav-link');
+  const sections = [
+    {id: "home", link: "Home"},
+    {id: "mission", link: "Our Mission"},
+    {id: "services", link: "Services"},
+    {id: "pacs", link: "PACS"},
+    {id: "appointment", link: "Appointment"},
+    {id: "contact", link: "Contact"}
+  ];
+  let activeId = "home";
+  for (const section of sections) {
+    const el = document.getElementById(section.id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 80 && rect.bottom > 80) {
+        activeId = section.id;
+        break;
+      }
+    }
+  }
+  links.forEach(link => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href") || "";
+    if (
+      (activeId === "home" && href.endsWith("index-2.html")) ||
+      (href.includes("#" + activeId))
+    ) {
+      link.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll", setActiveNav);
+window.addEventListener("DOMContentLoaded", setActiveNav);
+
+// Theme toggle logic
+const themeToggle = document.getElementById('themeToggle');
+const switchThumb = document.getElementById('switchThumb');
+const switchTrack = document.getElementById('switchTrack');
+const switchIcon = document.getElementById('switchIcon');
+const body = document.body;
+const header = document.getElementById('header');
+let darkMode = false;
+
+function setDarkTheme() {
+  body.classList.add('dark-theme');
+  header.classList.add('dark-theme');
+  switchThumb.style.transform = 'translateX(24px)';
+  switchTrack.style.backgroundColor = '#4b5563'; // dark gray
+  // Moon icon
+  switchIcon.innerHTML = `
+    <path stroke="currentColor" stroke-width="2" fill="none"
+      d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
+  `;
+  switchIcon.classList.remove('text-yellow-400');
+  switchIcon.classList.add('text-gray-500');
+  darkMode = true;
+}
+function setLightTheme() {
+  body.classList.remove('dark-theme');
+  header.classList.remove('dark-theme');
+  switchThumb.style.transform = 'translateX(0)';
+  switchTrack.style.backgroundColor = '#d1d5db'; // light gray
+  // Sun icon
+  switchIcon.innerHTML = `
+    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+    <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+  `;
+  switchIcon.classList.remove('text-gray-500');
+  switchIcon.classList.add('text-yellow-400');
+  darkMode = false;
+}
+themeToggle.addEventListener('click', () => {
+  if (!darkMode) {
+    setDarkTheme();
+  } else {
+    setLightTheme();
+  }
+});
+// Set initial state
+setLightTheme();
+    </script>
+  </body>
+</html>
