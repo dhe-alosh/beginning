@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Form</title>
+    <title>Instant-Service</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -15,87 +15,141 @@
       }
       .main-container {
         display: flex;
-        width: 80%;
+        flex-wrap: wrap;
+        gap: 32px;
+        width: 90%;
         max-width: 1200px;
         background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-top: 200px;
-        margin-bottom: 100px;
-        margin-left: auto;   /* Center horizontally */
-        margin-right: auto;  /* Center horizontally */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        padding: 32px 24px;
+        margin-top: 120px;
+        margin-bottom: 60px;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 20px;
+        justify-content: center;
+        align-items: flex-start;
       }
       .contact-info,
       .form-container {
-        flex: 1;
-        padding: 20px;
-        text-align: center;
-      }
-
-      .contact-info{
-       text-align: left;
+        flex: 1 1 320px;
+        min-width: 320px;
+        max-width: 420px;
+        background: #f8fafc;
+        border-radius: 14px;
+        padding: 24px 18px;
+        margin: 0 8px;
+        box-shadow: 0 2px 8px rgba(30,64,175,0.04);
+        text-align: left;
       }
 
       .contact-info h2,
       .form-container h2 {
-        margin-top: 0;
-        font-size: 1.5rem; /* Make h2 text bigger */
+        font-size: 1.6rem;
         font-weight: bold;
+        margin-bottom: 12px;
         text-align: center;
         color: #40b2e6;
       }
-      .contact-info p {
-        margin: 10px 0;
+
+      .contact-info h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 18px 0 8px 0;
+        color: #0e7490;
       }
-      .contact-info a {
-        color: #007bff;
-        text-decoration: none;
+
+      .contact-info ul {
+        padding-left: 18px;
+        margin-bottom: 10px;
+        list-style-type: disc;      /* Ensure bullet points show */
+        list-style-position: inside; /* Optional: bullets inside the box */
       }
-      .contact-info span {
-        margin-right: 10px;
+
+      .contact-info li {
+        margin-bottom: 6px;
+        font-size: 1rem;
+        line-height: 1.5;
+        display: list-item;         /* Ensure list item marker is visible */
       }
-      .form-group {
-        margin-bottom: 15px;
+
+      .contact-info ol {
+        padding-left: 22px;
+        margin-bottom: 10px;
+        list-style-type: decimal;      /* Ensure numbers show */
+        list-style-position: inside;   /* Optional: numbers inside the box */
       }
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box;
+
+      .contact-info ol li {
+        margin-bottom: 8px;
+        font-size: 1rem;
+        line-height: 1.6;
+        display: list-item;            /* Ensure list item marker is visible */
       }
-      .form-group input {
-        height: 40px;
-      }
-      .form-group textarea {
-        height: 100px;
-        resize: none;
-      }
+
       .form-container form {
         display: flex;
         flex-direction: column;
+        gap: 10px;
       }
-      button {
-        background: none;
+
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #fff;
+        color: #22223b;
+        transition: border-color 0.2s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: #2563eb;
+        outline: none;
+      }
+
+      .form-group textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+
+      .form-container button[type="submit"] {
+        background: #2563eb;
+        color: #fff;
         border: none;
-        font-size: 24px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 10px 0;
+        margin-top: 8px;
         cursor: pointer;
-        align-self: flex-end;
-        padding: 10px;
+        transition: background 0.2s;
       }
-      @media (max-width: 768px) {
+
+      .form-container button[type="submit"]:hover {
+        background: #1d4ed8;
+      }
+
+      @media (max-width: 900px) {
         .main-container {
           flex-direction: column;
-          width: 100%;
+          align-items: stretch;
+          padding: 18px 4px;
         }
         .contact-info,
         .form-container {
-          width: 100%;
+          max-width: 100%;
+          margin: 0 0 18px 0;
         }
       }
+
       /* NAV BAR & FOOTER CSS (extract) */
 
 /* Header/Nav */
@@ -178,28 +232,6 @@ header.scrolled .dropdown-content a:hover {
 #themeToggle {
   /* Uses Tailwind utility classes in HTML */
 }
-
-
-      .map-section {
-        padding: 0 1rem;
-        background: #fff;
-        display: block;
-        margin-top: auto;
-        margin-bottom: auto;
-      }
-      .map-effect {
-        border-radius: 20px;
-        border: 0;
-        min-width: 300px;
-        max-width: 18000px;
-        width: 100%;
-        transition: box-shadow 0.3s ease; /* Only animate box-shadow, not all */
-        box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
-      }
-      /* Remove the hover scale and color change to prevent shaking */
-      .map-effect:hover {
-        /* No transform or color change on hover */
-      }
 
 
       footer#contact {
@@ -391,58 +423,87 @@ body.dark-theme {
 
     <!-- ...existing code... -->
   <div style="width:100%; text-align:center; margin-bottom: 32px;  padding-bottom:10px; padding-top:20px; margin-top: 80px; background: linear-gradient(rgba(64,178,230,0.85),rgba(255,255,255,0.92)), url('img/slider31.png') center center / cover no-repeat;" class="header-container">
-    <h1 style="font-size:2.5rem; font-weight:bold; margin:0; color:#40b2e6;">Contact Us</h1>
+    <h1 style="font-size:2.5rem; font-weight:bold; margin:0; color:#40b2e6;">Instant Service Centre</h1>
     <p style="font-size:1.1rem; color:#555; margin-top:8px;">We'd love to hear from you. Reach out using the form or details below.</p>
   </div>
 <!-- ...existing code... -->
 
     <div class="main-container" style="margin-top: 80px">
       <div class="contact-info">
-        <h2>Contact Information</h2>
-        <p><span>📍</span> Olabisi Onabanjo Way, (P.M.B 3031, Sapon), Abeokuta, Ogun State, Nigeria.</p>
-        <p><span>📞</span> +2348033806574, +2348034919305</p>
-        <p>
-          <span>📧</span>
-          <a href="mailto:fmca.emrunit@fmcabeokuta.org">fmca.emrunit@fmcabeokuta.org, emrfmca@gmail.com</a>
-        </p>
-        <p><span>🌐</span> <a href="https://fmcaemr.com">fmcaemr.com</a></p>
-      </div>
-      <div class="form-container">
-        <h2>Get In Touch</h2>
-        <form onsubmit="handleSubmit(event)">
-          <div class="form-group flex gap-2">
-            <input type="text" placeholder="Your firstname" required />
-            <input type="text" placeholder="Your lastname" required />
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Your email address" required />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              placeholder="Your subject of this message"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <textarea placeholder="Say something about us" required></textarea>
-          </div>
-          <button type="submit">Submit ➕</button>
-        </form>
-      </div>
-      <section class="map-section">
-        <div class="w-full flex justify-center">
-          <iframe
-            src="https://www.google.com/maps?q=Federal+Medical+Centre+Abeokuta&output=embed"
-            width="100%"
-            height="300px"
-            class="map-effect"
-            allowfullscreen="true"
-            loading="lazy"
-            title="Federal Medical Centre Abeokuta Map"
-          ></iframe>
+        <h2>Instant Service Centre</h2>
+        <h3>Instant Service offers:</h3>
+        <ul>
+          <li>24 Hours Support</li>
+          <li>Rapid Response and Attention</li>
+          <li>Expert Technical and Medicinal Assistance</li>
+        </ul>
+
+        <h3>At the following locations or Centre :</h3>
+        <ul>
+          <li>Radiology</li>
+          <li>Cardiology</li>
+          <li>Laboratory</li>
+          <li>EMR Head Office</li>
+        </ul>
+        
+        <!-- Download Guide Link -->
+        <div style="margin-top:18px; text-align:center;">
+          <a href="img/isrf.jpeg" download class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition">
+            Download Service Guide
+          </a>
         </div>
-      </section>
+      </div>
+
+      <div class="contact-info">
+        <h2>Guide for NEW patient</h2>
+        <h3>Are you a NEW WALK-IN PATIENT?</h3>
+        <ol>
+          <li><p>Provide your details and the services you came for at any of our designated instant service centers.</p></li>
+          <li><p>After registration, make sure to collect your PID (Patient Identification) Number and proceed to make your payment at nearest payment point.</p></li>
+          <li><p>After Payment, please wait patiently at the waiting room till you are called into the consultation room for procedure.</p></li>
+        </ol>
+      </div>
+
+      <div class="contact-info">
+        <h2>Guide for REPEAT patient</h2>
+        <h3>Are you a FOLLOW-UP (RETURNING) PATIENT?</h3>
+        <ol>
+          <li><p>Provide your PID (Patient Identification) Number and the services you came for at any of our designated instant service centers.</p></li>
+          <li><p>After registration, proceed to make your payment at nearest payment point.</p></li>
+          <li><p>After Payment, please wait patiently at the waiting room till you are called into the consultation room for procedure.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Move the form-container below the main-container and match its width -->
+    <div class="form-container" style="max-width:1200px; width:90%; margin: 0 auto 60px auto; background: #f8fafc; border-radius: 14px; box-shadow: 0 2px 8px rgba(30,64,175,0.04); padding: 32px 24px;">
+      <h2>Confirm if your Results are Ready?</h2>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group flex gap-2">
+          <input type="text" placeholder="Your fullname" required />
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your email address" required />
+        </div>
+        <div class="form-group flex gap-2">
+          <input type="number" placeholder="Phone number" required />
+          <input type="number" placeholder="PID Number" required />
+        </div>
+        <div class="form-group flex gap-2">
+          <input type="text" placeholder="ISRF Receipt Number" required />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Lab/Radiology/Pharmacy/Cardiology/Other Investigation"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Other Information, Comment or Complain?" required></textarea>
+        </div>
+        <button type="submit">Submit ➕</button>
+      </form>
     </div>
 
 
