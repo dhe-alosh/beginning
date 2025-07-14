@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
       .hero-container {
         position: relative;
@@ -38,7 +39,7 @@
         backdrop-filter: none;
       }
       header.scrolled {
-        background: rgba(255,255,255,0.15);
+        background: #fff;
         backdrop-filter: blur(12px);
         box-shadow: 0 2px 8px rgba(30,64,175,0.07);
       }
@@ -49,7 +50,7 @@
       }
       header.scrolled h1,
       header.scrolled a {
-        color: #fff;
+        color: #2563eb; /* Tailwind blue-600 */
       }
       header .nav-link.active {
         position: relative;
@@ -185,10 +186,10 @@
         background-color: #3b82f6;
       }
       header.scrolled .dropdown-content {
-        background-color: white;
+        background-color: #fff;
       }
       header.scrolled .dropdown-content a {
-        color: #1e40af;
+        color: #2563eb;
       }
       header.scrolled .dropdown-content a:hover {
         background-color: #e0e7ff;
@@ -552,12 +553,30 @@
         <nav class="flex items-center space-x-6">
           <a href="index-2.html" class="nav-link">Home</a>
           
-          <a href="index-2.html#mission" class="nav-link">Our Mission</a>
           <div class="dropdown">
-            <a href="index-2.html#services" class="dropdown-toggle nav-link">Services</a>
+            <a href="#" class="dropdown-toggle nav-link">About+</a>
+            <div class="dropdown-content">
+              <a href="#">Who we are</a>
+              <a href="#">Management</a>
+              <a href="#">Team</a>
+              <a href="#">IT set 25'</a>
+            </div>
+          </div>
+          
+          <div class="dropdown">
+            <a href="index-2.html#services" class="dropdown-toggle nav-link">Services+</a>
             <div class="dropdown-content">
               <a href="https://techxploit.com.ng/">PACS</a>
               <a href="index-2.html#appointment">Appointment</a>
+              <a href="isrf.html">Instant Service</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="#" class="dropdown-toggle nav-link">Media+</a>
+            <div class="dropdown-content">
+              <a href="#">Gallery</a>
+              <a href="#">News & Event</a>
             </div>
           </div>
           <a href="Contact.html" class="nav-link">Contact</a>
@@ -685,100 +704,820 @@
       </div>
     </section>
 
-   <section id="custom-services" class="py-20 bg-gray-50">
-      <div class="container mx-auto flex flex-col items-center justify-center px-2 sm:px-4">
-        <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">Explore Our Services In Providing<br>Healthcare Solution</h2>
-        <a href="#home" class="bg-white text-black px-8 py-2 rounded-md font-semibold shadow-md inline-block mb-12">Learn More</a>
-        <div class="slider-wrapper w-full max-w-6xl" style="perspective: 1200px; perspective-origin: 50% 50%; overflow: visible;">
-          <div id="gsap-arc-slider" class="slider-track arc-slider py-4 scrollbar-hide snap-x snap-mandatory">
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/thisisengineering-ZPeXrWxOjRQ-unsplash (1).jpg" alt="Instant Service" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Instant Service</div>
+
+    <br>
+    <br><br>
+    <section class="w-full max-w-7xl mx-auto px-4 mb-16">
+      <style>
+        /* Infinite Scroll Animation */
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - 1.5rem));
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+          will-change: transform;
+        }
+
+        .infinite-scroll-container {
+          display: flex;
+          gap: 1.5rem;
+          width: max-content;
+        }
+
+        .infinite-scroll-container .explore-card {
+          flex-shrink: 0;
+          transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s,
+            opacity 0.4s;
+          width: 320px;
+          height: 400px;
+          /* Remove min-height and scaleY */
+          opacity: 0;
+          transform: translateY(100px);
+          animation: cardSlideDown 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards;
+        }
+
+        @keyframes cardSlideDown {
+          0% {
+            opacity: 0;
+            transform: translateY(100px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Stagger animation for cards */
+        .infinite-scroll-container .explore-card:nth-child(1) {
+          animation-delay: 0.3s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(2) {
+          animation-delay: 0.6s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(3) {
+          animation-delay: 0.9s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(4) {
+          animation-delay: 1.2s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(5) {
+          animation-delay: 1.5s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(6) {
+          animation-delay: 1.8s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(7) {
+          animation-delay: 2.1s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(8) {
+          animation-delay: 2.4s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(9) {
+          animation-delay: 2.7s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(10) {
+          animation-delay: 3s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(11) {
+          animation-delay: 3.3s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(12) {
+          animation-delay: 3.6s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(13) {
+          animation-delay: 3.9s;
+        }
+        .infinite-scroll-container .explore-card:nth-child(14) {
+          animation-delay: 4.2s;
+        }
+
+        .infinite-scroll-container .explore-card .card-overlay {
+          opacity: 1;
+          pointer-events: auto;
+          transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .infinite-scroll-container .explore-card:hover {
+          width: 520px;
+          z-index: 10;
+          box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.35);
+          transform: translateX(50px) scale(1.05);
+          transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s,
+            opacity 0.4s, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .infinite-scroll-container:hover .explore-card:not(:hover) {
+          width: 100px;
+          opacity: 0.7;
+          filter: blur(0.5px) grayscale(0.1);
+          z-index: 1;
+          transform: translateX(-20px) scale(0.95);
+          transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s,
+            filter 0.4s, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .infinite-scroll-container .explore-card:hover .card-overlay {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+          .infinite-scroll-container .explore-card {
+            width: 220px;
+            height: 320px;
+          }
+          .infinite-scroll-container .explore-card:hover {
+            width: 380px;
+            transform: translateX(30px) scale(1.05);
+          }
+          .infinite-scroll-container:hover .explore-card:not(:hover) {
+            width: 70px;
+            filter: blur(0.5px) grayscale(0.1);
+            transform: translateX(-15px) scale(0.95);
+          }
+        }
+        @media (max-width: 768px) {
+          .infinite-scroll-container .explore-card {
+            width: 160px;
+            height: 240px;
+          }
+          .infinite-scroll-container .explore-card:hover {
+            width: 280px;
+            transform: translateX(25px) scale(1.05);
+          }
+          .infinite-scroll-container:hover .explore-card:not(:hover) {
+            width: 50px;
+            filter: blur(0.5px) grayscale(0.1);
+            transform: translateX(-10px) scale(0.95);
+          }
+        }
+        @media (max-width: 640px) {
+          .infinite-scroll-container .explore-card {
+            width: 120px;
+            height: 180px;
+          }
+          .infinite-scroll-container .explore-card:hover {
+            width: 220px;
+            transform: translateX(20px) scale(1.05);
+          }
+          .infinite-scroll-container:hover .explore-card:not(:hover) {
+            width: 35px;
+            filter: blur(0.5px) grayscale(0.1);
+            transform: translateX(-8px) scale(0.95);
+          }
+        }
+
+        /* Performance optimizations */
+        .infinite-scroll-container {
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+
+        .infinite-scroll-container .explore-card {
+          backface-visibility: hidden;
+          transform-style: preserve-3d;
+        }
+
+      </style>
+
+      <div class="flex flex-col lg:flex-row gap-20 items-center">
+        <!-- Left: Main Text -->
+        <div
+          class="flex-1 flex flex-col justify-start py-12"
+          style="margin-left: 0; padding-left: 0"
+        >
+          <span
+            class="uppercase tracking-widest font-semibold text-gray-700 text-sm mb-2 pb-1 what-we-do-underline animated-text"
+            style="
+              letter-spacing: 0.12em;
+              font-family: 'Satoshi', sans-serif;
+              font-weight: 300;
+              font-size: 16px;
+            "
+            >WHAT WE DO</span
+          >
+          <style>
+            .what-we-do-underline {
+              position: relative;
+              display: inline-block;
+            }
+            .what-we-do-underline::after {
+              content: "";
+              display: block;
+              width: 60px;
+              height: 2px;
+              background: #333;
+              border-radius: 2px;
+              margin-top: 4px;
+              margin-left: 0;
+              transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .what-we-do-underline:hover::after {
+              width: 120px;
+            }
+
+            /* Text Reveal Animation Styles */
+            .animated-text {
+              opacity: 0;
+              transform: translateY(30px);
+              animation: textReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                forwards;
+            }
+
+            .animated-title {
+              opacity: 0;
+              transform: translateY(40px);
+              animation: textReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s
+                forwards;
+            }
+
+            .animated-description {
+              opacity: 0;
+              transform: translateY(30px);
+              animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                0.6s forwards;
+            }
+
+            @keyframes textReveal {
+              0% {
+                opacity: 0;
+                transform: translateY(30px);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+
+            /* Word-by-word animation for description */
+            .word-animation {
+              display: inline-block;
+              opacity: 0;
+              transform: translateX(50px);
+              animation: wordReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                forwards;
+            }
+
+            @keyframes wordReveal {
+              0% {
+                opacity: 0;
+                transform: translateX(50px);
+              }
+              100% {
+                opacity: 1;
+                transform: translateX(0);
+              }
+            }
+
+            /* Stagger delay for words */
+            .word-animation:nth-child(1) {
+              animation-delay: 0.8s;
+            }
+            .word-animation:nth-child(2) {
+              animation-delay: 0.9s;
+            }
+            .word-animation:nth-child(3) {
+              animation-delay: 1s;
+            }
+            .word-animation:nth-child(4) {
+              animation-delay: 1.1s;
+            }
+            .word-animation:nth-child(5) {
+              animation-delay: 1.2s;
+            }
+            .word-animation:nth-child(6) {
+              animation-delay: 1.3s;
+            }
+            .word-animation:nth-child(7) {
+              animation-delay: 1.4s;
+            }
+            .word-animation:nth-child(8) {
+              animation-delay: 1.5s;
+            }
+            .word-animation:nth-child(9) {
+              animation-delay: 1.6s;
+            }
+            .word-animation:nth-child(10) {
+              animation-delay: 1.7s;
+            }
+            .word-animation:nth-child(11) {
+              animation-delay: 1.8s;
+            }
+            .word-animation:nth-child(12) {
+              animation-delay: 1.9s;
+            }
+            .word-animation:nth-child(13) {
+              animation-delay: 2s;
+            }
+            .word-animation:nth-child(14) {
+              animation-delay: 2.1s;
+            }
+            .word-animation:nth-child(15) {
+              animation-delay: 2.2s;
+            }
+            .word-animation:nth-child(16) {
+              animation-delay: 2.3s;
+            }
+            .word-animation:nth-child(17) {
+              animation-delay: 2.4s;
+            }
+            .word-animation:nth-child(18) {
+              animation-delay: 2.5s;
+            }
+            .word-animation:nth-child(19) {
+              animation-delay: 2.6s;
+            }
+            .word-animation:nth-child(20) {
+              animation-delay: 2.7s;
+            }
+
+            /* Smooth reveal for the entire section */
+            .text-section-reveal {
+              opacity: 0;
+              transform: translateY(50px);
+              animation: sectionReveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                forwards;
+            }
+
+            @keyframes sectionReveal {
+              0% {
+                opacity: 0;
+                transform: translateY(50px);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          </style>
+          <h2
+            class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4 animated-title"
+            style="
+              font-family: 'Erode', sans-serif;
+              font-weight: 400;
+              font-size: 42px;
+            "
+          >
+            Our Services
+          </h2>
+          <p
+            class="text-gray-600 mt-2 animated-description"
+            style="
+              font-family: 'Erode', sans-serif;
+              font-weight: 300;
+              font-size: 15px;
+              max-width: 420px;
+              line-height: 1.45em;
+            "
+          >
+            <span class="word-animation">Our</span>
+            <span class="word-animation">range</span>
+            <span class="word-animation">of</span>
+            <span class="word-animation">services</span>
+            <span class="word-animation">is</span>
+            <span class="word-animation">to</span>
+            <span class="word-animation">provide</span>
+            <span class="word-animation">innovative</span>
+            <span class="word-animation">healthcare</span>
+            <span class="word-animation">solutions</span>
+            <span class="word-animation">that</span>
+            <span class="word-animation">enhance</span>
+            <span class="word-animation">patient</span>
+            <span class="word-animation">care</span><br />
+            <span class="word-animation">and</span>
+            <span class="word-animation">streamline</span>
+            <span class="word-animation">medical</span>
+            <span class="word-animation">processes</span>
+            <span class="word-animation">with</span>
+            <span class="word-animation">cutting-edge</span>
+            <span class="word-animation">technology.</span>
+          </p>
+        </div>
+        <style>
+          @media (max-width: 1024px) {
+            .pl-0 {
+              padding-left: 0 !important;
+            }
+            .pr-0 {
+              padding-right: 0 !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .pl-0 {
+              padding-left: 0 !important;
+            }
+            .pr-0 {
+              padding-right: 0 !important;
+            }
+          }
+        </style>
+        <!-- Right: Infinite Scrolling Cards -->
+        <div class="flex-[2] w-full relative overflow-hidden pr-12 servv">
+          <div class="infinite-scroll-container flex gap-6 animate-scroll">
+            <!-- Original 3 cards + 4 new cards = 7 total -->
+            <!-- Card 1: Writing Course -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=600&q=80"
+                alt="Writing Course"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold"
+                  >Writing Course</span
+                >
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Writing Course</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/the-climate-reality-project-Hb6uWq0i4MI-unsplash (1).jpg" alt="Laboratory" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Training</div>
+            <!-- Card 2: Writing -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=600&q=80"
+                alt="Writing"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Writing</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Laboratory</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Writing</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/martha-dominguez-de-gouveia-nMyM7fxpokE-unsplash (1).jpg" alt="Calendar" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Laboratory</div>
+            <!-- Card 3: Business -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=600&q=80"
+                alt="Business"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Business</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Laboratory</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Business</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/denise-jans-_dXkaD3l574-unsplash (1).jpg" alt="Training" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Result Printing</div>
+            <!-- Card 4: Technology -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=facearea&w=600&q=80"
+                alt="Technology"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Technology</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >150
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Result Printing</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Technology</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/radiology2.jpg" alt="Radiology 2" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Radiology</div>
+            <!-- Card 5: Design -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=facearea&w=600&q=80"
+                alt="Design"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Design</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >200
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Radiology</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Design</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/networking.jpg" alt="Networking" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
-                <div class="card-text-overlay">Pacs</div>
+            <!-- Card 6: Marketing -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=facearea&w=600&q=80"
+                alt="Marketing"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Marketing</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >120
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Pacs</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Marketing</span>
+              </div>
             </div>
-            <div class="relative rounded-2xl shadow-lg bg-white min-w-[300px] max-w-xs flex-shrink-0 snap-center md:min-w-0 md:max-w-none">
-              <div class="slider-card-img-zoom-container h-40">
-                <img src="img/maintenance.jpg" alt="Maintenance" loading="lazy" class="w-full h-40 object-cover rounded-2xl" />
+            <!-- Card 7: Healthcare -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=facearea&w=600&q=80"
+                alt="Healthcare"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Healthcare</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >300
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
               </div>
-              <span class="absolute bottom-3 left-3 text-white text-lg font-semibold">Maintenance</span>
-              <span class="absolute top-2 right-2 bg-white rounded-full p-1 flex items-center justify-center shadow" style="z-index:3;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M17 7v10"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7"/>
-                </svg>
-              </span>
+              <!-- Vertical Title Overlay for compressed state -->
+              <div
+                class="vertical-title-overlay pointer-events-none select-none"
+              >
+                <span>Healthcare</span>
+              </div>
+            </div>
+            <!-- Duplicate cards for seamless loop -->
+            <!-- Card 1 Duplicate: Writing Course -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=600&q=80"
+                alt="Writing Course"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold"
+                  >Writing Course</span
+                >
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 2 Duplicate: Writing -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=facearea&w=600&q=80"
+                alt="Writing"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Writing</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 3 Duplicate: Business -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=600&q=80"
+                alt="Business"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Business</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >100
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 4 Duplicate: Technology -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=facearea&w=600&q=80"
+                alt="Technology"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Technology</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >150
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 5 Duplicate: Design -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=facearea&w=600&q=80"
+                alt="Design"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Design</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >200
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 6 Duplicate: Marketing -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=facearea&w=600&q=80"
+                alt="Marketing"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Marketing</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >120
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
+            </div>
+            <!-- Card 7 Duplicate: Healthcare -->
+            <div
+              class="explore-card group relative bg-gray-100 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-end min-h-[340px] cursor-pointer flex-shrink-0 w-80"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=facearea&w=600&q=80"
+                alt="Healthcare"
+                class="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+              ></div>
+              <!-- Overlay on hover -->
+              <div
+                class="card-overlay absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex flex-col gap-2 rounded-b-3xl"
+              >
+                <span class="text-white text-3xl font-bold">Healthcare</span>
+                <span class="text-white text-5xl font-extrabold mt-2"
+                  >300
+                  <span class="text-lg font-normal align-top"
+                    >TOPICS</span
+                  ></span
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -1189,7 +1928,7 @@
 
    <section id="news" class="py-16 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Latest News & Updates</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">News Blog</h2>
     <div class="grid gap-8 md:grid-cols-3">
       <!-- News Item 1 -->
       <div class="news-card mission-vision-card">
@@ -1275,7 +2014,7 @@
                 <img src="img/techxpl.jpeg" alt="Partner 1 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
               </div>
               <div class="inline-block align-middle">
-                <img src="img/alosh.jpg" alt="Partner 2 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
+                <img src="img/keen.jpg" alt="Partner 2 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
               </div>
               <div class="inline-block align-middle">
                 <img src="img/mamo.jpeg" alt="Partner 3 Logo" class="h-12 w-12 rounded-full shadow-md bg-white object-cover p-1 border border-blue-200" />
@@ -1332,7 +2071,7 @@
           </div>
         </div>
         <div class="mt-4 border-t border-blue-400 pt-2 text-center text-blue-100 text-[10px] tracking-wide font-light">
-          <p>© 2024-2025 <a href="#"><span class="font-semibold" style="color: #40b2e6;">FMCAEMR</span></a>. All rights reserved. Powered by <span class="font-semibold">IT set 25'</span>. Led by <span class="font-semibold">alosh.inc</span></p>
+          <p>© 2024-2025 <a href="#"><span class="font-semibold" style="color: #40b2e6;">FMCAEMR</span></a>. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -1608,6 +2347,253 @@
       });
       // Set initial state
       setLightTheme();
+
+
+
+
+
+
+      // GSAP-powered animations
+      document.addEventListener("DOMContentLoaded", function () {
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        const scrollContainer = document.querySelector(
+          ".infinite-scroll-container"
+        );
+        const cards = document.querySelectorAll(".explore-card");
+        const textElements = document.querySelectorAll(
+          ".animated-text, .animated-title, .animated-description"
+        );
+        const words = document.querySelectorAll(".word-animation");
+
+        if (!scrollContainer || !cards.length) return;
+
+        // GSAP Infinite Scroll Animation
+        const scrollTween = gsap.to(scrollContainer, {
+          x: () => -(scrollContainer.scrollWidth - scrollContainer.clientWidth),
+          ease: "none",
+          duration: 30,
+          repeat: -1,
+          onUpdate: function () {
+            // Pause on hover
+            if (scrollContainer.matches(":hover")) {
+              this.pause();
+            } else {
+              this.resume();
+            }
+          },
+        });
+
+        // Pause on hover and touch
+        scrollContainer.addEventListener("mouseenter", () =>
+          scrollTween.pause()
+        );
+        scrollContainer.addEventListener("mouseleave", () =>
+          scrollTween.resume()
+        );
+
+        if ("ontouchstart" in window) {
+          scrollContainer.addEventListener("touchstart", () =>
+            scrollTween.pause()
+          );
+          scrollContainer.addEventListener("touchend", () => {
+            setTimeout(() => scrollTween.resume(), 1000);
+          });
+        }
+
+        // Responsive animation speed
+        function adjustScrollSpeed() {
+          const width = window.innerWidth;
+          let duration = 30;
+
+          if (width <= 640) duration = 15;
+          else if (width <= 768) duration = 20;
+          else if (width <= 1024) duration = 25;
+
+          scrollTween.duration(duration);
+        }
+
+        adjustScrollSpeed();
+        window.addEventListener("resize", () => {
+          clearTimeout(window.resizeTimeout);
+          window.resizeTimeout = setTimeout(adjustScrollSpeed, 100);
+        });
+
+        // GSAP Text Animations with ScrollTrigger
+        gsap.fromTo(
+          ".animated-text",
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".animated-text",
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          ".animated-title",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".animated-title",
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          ".animated-description",
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            delay: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".animated-description",
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        // GSAP Word-by-Word Animation
+        gsap.fromTo(
+          ".word-animation",
+          { opacity: 0, x: 50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.1,
+            delay: 0.8,
+            scrollTrigger: {
+              trigger: ".animated-description",
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        // GSAP Card Slide-Down Animation
+        gsap.fromTo(
+          ".explore-card",
+          { opacity: 0, y: 100 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: ".infinite-scroll-container",
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        // GSAP Hover Effects for Cards
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            const rect = this.getBoundingClientRect();
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const containerCenter =
+              containerRect.left + containerRect.width / 2;
+            const distanceFromCenter = cardCenter - containerCenter;
+
+            let slideDistance = 0;
+            if (Math.abs(distanceFromCenter) > 50) {
+              slideDistance = -distanceFromCenter * 0.3;
+              slideDistance = Math.max(-100, Math.min(100, slideDistance));
+            }
+
+            gsap.to(this, {
+              x: slideDistance,
+              scale: 1.05,
+              duration: 0.5,
+              ease: "power2.out",
+            });
+          });
+
+          card.addEventListener("mouseleave", function () {
+            gsap.to(this, {
+              x: 0,
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+        });
+
+        // GSAP Completion Effects
+        cards.forEach((card) => {
+          gsap.to(card, {
+            boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+            duration: 0.3,
+            delay: 1.2,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          });
+        });
+
+        // GSAP Word Bounce Effect
+        words.forEach((word) => {
+          gsap.to(word, {
+            scale: 1.05,
+            duration: 0.15,
+            delay: 0.8,
+            yoyo: true,
+            repeat: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: word,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          });
+        });
+
+        // Handle card clicks
+        cards.forEach((card) => {
+          card.addEventListener("click", function (e) {
+            console.log(
+              "Card clicked:",
+              this.querySelector("span").textContent
+            );
+          });
+        });
+
+        // Optimize for reduced motion
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.disable());
+          scrollTween.pause();
+        }
+      });
     </script>
 
     <!-- Add these styles to your <style> section -->
